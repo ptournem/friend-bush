@@ -33,13 +33,13 @@ export const addFriend = name  => {
     return actionCreator(ADD_FRIEND,{
       name : name
     });
-}
+};
 
 export const removeFriend = id  => {
     return actionCreator(,REMOVE_FRIEND,{
         id : id
     });
-}
+};
 
 // Payements
 export const addPayement = (label,cost)=> {
@@ -47,24 +47,44 @@ export const addPayement = (label,cost)=> {
     label : label,
     cost:cost
   });
-}
+};
 
 export const setPayementCost = (id,cost)=> {
   return actionCreator(SET_PAYEMENT_COST,{
     id : id,
     cost:cost
   });
-}
+};
 
 export const setPayementLabel = (id,label)=> {
   return actionCreator(SET_PAYEMENT_LABEL,{
     id : id,
     label : label
   });
-}
+};
 
 export const removePayement = (id)=> {
   return actionCreator(REMOVE_PAYEMENT,{
     id : id
   });
-}
+};
+
+export const addShare = (paidById,weight)=> {
+  return actionCreator(ADD_SHARE,{
+    paidById : paidById,
+	weight: weight
+  });
+};
+
+export const setShareWeight = (id,weight)=> {
+  return actionCreator(SET_SHARE_WEIGHT,{
+    id : id,
+	weight: weight
+  });
+};
+
+export const removeShare = (id)=> {
+  return actionCreator(REMOVE_SHARE,{
+    id : id
+  });
+};
