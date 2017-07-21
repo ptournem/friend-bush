@@ -1,3 +1,5 @@
+import uuid from 'uuid/v1';
+
 /*
  * Action types
  */
@@ -10,12 +12,22 @@ export const REMOVE_FRIEND = 'REMOVE_FRIEND';
 export const ADD_PAYEMENT = 'ADD_PAYEMENT';
 export const SET_PAYEMENT_COST = 'SET_PAYEMENT_COST';
 export const SET_PAYEMENT_LABEL = 'SET_PAYEMENT_LABEL';
+export const SET_PAYEMENT_PAID_BY = 'SET_PAYEMENT_PAID_BY';
 export const REMOVE_PAYEMENT = 'REMOVE_PAYEMENT';
 
 // Shares
 export const ADD_SHARE = 'ADD_SHARE';
 export const SET_SHARE_WEIGHT = 'SET_SHARE_WEIGHT';
 export const REMOVE_SHARE = 'REMOVE_SHARE';
+
+/**
+ * other constant
+ */
+
+const FRIEND_NAME = 'friend';
+const PAYEMENT_NAME = 'payement';
+const SHARE_NAME = 'share';
+
 
 
 /*
@@ -31,12 +43,13 @@ const actionCreator = (type,payLoad) => {
 // Friends
 export const addFriend = name  => {
     return actionCreator(ADD_FRIEND,{
+	  id : FRIEND_NAME + "_" + uuid(),
       name : name
     });
 };
 
 export const removeFriend = id  => {
-    return actionCreator(,REMOVE_FRIEND,{
+    return actionCreator(REMOVE_FRIEND,{
         id : id
     });
 };
@@ -44,6 +57,7 @@ export const removeFriend = id  => {
 // Payements
 export const addPayement = (label,cost)=> {
   return actionCreator(ADD_PAYEMENT,{
+	id : PAYEMENT_NAME + "_" + uuid(),
     label : label,
     cost:cost
   });
@@ -63,15 +77,23 @@ export const setPayementLabel = (id,label)=> {
   });
 };
 
+export const setPayementPaidBy = (id,paidById)=> {
+  return actionCreator(SET_PAYEMENT_LABEL,{
+    id : id,
+    paidById : paidById
+  });
+};
+
 export const removePayement = (id)=> {
   return actionCreator(REMOVE_PAYEMENT,{
     id : id
   });
 };
 
-export const addShare = (paidById,weight)=> {
+export const addShare = (owedById,weight)=> {
   return actionCreator(ADD_SHARE,{
-    paidById : paidById,
+	id: SHARE_NAME + "_" + uuid(),
+    owedById : owedById,
 	weight: weight
   });
 };
