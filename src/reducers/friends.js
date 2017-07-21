@@ -1,6 +1,11 @@
 import {ADD_FRIEND, REMOVE_FRIEND } from '../actions';
 import {combineReducers} from 'redux';
 
+/**
+ * [addFriendEntry Add an friend in byId]
+ * @param {Object} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function addFriendEntry(state,action){
 	const {payLoad} = action ;
 	const {id,name } = payLoad;
@@ -13,6 +18,11 @@ function addFriendEntry(state,action){
 	};
 }
 
+/**
+ * [addFriendId Add a friend in allIds]
+ * @param {Array} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function addFriendId(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
@@ -20,18 +30,26 @@ function addFriendId(state,action){
 	return state.concat(id);
 }
 
+/**
+ * [removeFriendEntry Remove a friend from byId]
+ * @param {Object} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function removeFriendEntry(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
 
-	const res =  Object.keys(state).filter(friendId=>  friendId===id).reduce((obj,key)=>{
+	return  Object.keys(state).filter(friendId=>  friendId===id).reduce((obj,key)=>{
 		obj[key]=state[key];
 		return obj
 	},{});
-
-	return res;
 }
 
+/**
+ * [removeFriendId Remove a friend from allIds]
+ * @param {Array} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function removeFriendId(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
@@ -41,7 +59,12 @@ function removeFriendId(state,action){
 
 
 
-
+/**
+ * [friendsById Handle action for byId object]
+ * @param {Object} [state={}]  [current state]
+ * @param {Object} action [action to handle]
+ * @return {Object}            [next state]
+ */
 function friendsById(state = {},action){
 	switch (action.type) {
 		case ADD_FRIEND: return addFriendEntry(state,action);
@@ -51,6 +74,12 @@ function friendsById(state = {},action){
 	}
 }
 
+/**
+ * [allFriends description]
+ * @param {Array} [state=[]]  [current state]
+ * @param {Object} action [action to handle]
+ * @return {Array}            [next state]
+ */
 function allFriends(state = [],action){
 	switch (action.type) {
 		case ADD_FRIEND: return addFriendId(state,action);

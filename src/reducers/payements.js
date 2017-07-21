@@ -1,6 +1,11 @@
 import {ADD_PAYEMENT, SET_PAYEMENT_COST, SET_PAYEMENT_LABEL,SET_PAYEMENT_PAID_BY, REMOVE_PAYEMENT} from '../actions';
 import {combineReducers} from 'redux';
 
+/**
+ * [addPayementEntry Add a payement in byId]
+ * @param {Object} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function addPayementEntry(state,action){
 	const {payLoad} = action ;
 	const {id,label,cost } = payLoad;
@@ -13,6 +18,11 @@ function addPayementEntry(state,action){
 	};
 }
 
+/**
+ * [addPayementId Add a payement in allIds]
+ * @param {Array} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function addPayementId(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
@@ -20,6 +30,11 @@ function addPayementId(state,action){
 	return state.concat(id);
 }
 
+/**
+ * [removePayementEntry Remove a payement in byId]
+ * @param {Array} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function removePayementEntry(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
@@ -30,6 +45,11 @@ function removePayementEntry(state,action){
 	},{});
 }
 
+/**
+ * [removePayementId Remove a payement from allIds]
+ * @param {Array} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function removePayementId(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
@@ -37,6 +57,11 @@ function removePayementId(state,action){
 	return state.filter(payementId=> payementId!==id);
 }
 
+/**
+ * [setPayementCost Update a payement cost ]
+ * @param {Object} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function setPayementCost(state,action){
 	const {payLoad} = action;
 	const{id,cost} = payLoad;
@@ -50,6 +75,11 @@ function setPayementCost(state,action){
 	},{})
 }
 
+/**
+ * [setPayementLabel Update a payement label]
+ * @param {Object} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function setPayementLabel(state,action){
 	const {payLoad} = action;
 	const{id,label} = payLoad;
@@ -63,6 +93,11 @@ function setPayementLabel(state,action){
 	},{})
 }
 
+/**
+ * [setPayementPaidBy Update a payement paidById]
+ * @param {Object} state  [current state]
+ * @param {Object} action [action to handle]
+ */
 function setPayementPaidBy(state,action){
 	const {payLoad} = action;
 	const{id,paidById} = payLoad;
@@ -76,6 +111,13 @@ function setPayementPaidBy(state,action){
 	},{})
 }
 
+
+/**
+ * [payementsById Handle action for byId object]
+ * @param {Object} [state={}] [current state]
+ * @param {Object} action [action to handle]
+ * @return {Object}            [next state]
+ */
 function payementsById(state = {},action){
 	switch (action.type) {
 		case ADD_PAYEMENT: return addPayementEntry(state,action);
@@ -88,6 +130,12 @@ function payementsById(state = {},action){
 	}
 }
 
+/**
+ * [allPayements Handle action for allIds object]
+ * @param {Array} [state=[]]  [current state]
+ * @param {Object} action [action to handle]
+ * @return {Array}            [next state]
+ */
 function allPayements(state = [],action){
 	switch (action.type) {
 		case ADD_PAYEMENT: return addPayementId(state,action);
