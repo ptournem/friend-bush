@@ -39,7 +39,7 @@ function removeFriendEntry(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
 
-	return  Object.keys(state).filter(friendId=>  friendId===id).reduce((obj,key)=>{
+	return  Object.keys(state).filter(friendId=> friendId!==id).reduce((obj,key)=>{
 		obj[key]=state[key];
 		return obj
 	},{});
