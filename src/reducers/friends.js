@@ -1,4 +1,4 @@
-import {ADD_FRIEND, REMOVE_FRIEND } from '../actions';
+import {ADD_FRIEND, REMOVE_FRIEND, SET_FRIEND_NAME } from '../actions';
 import {combineReducers} from 'redux';
 
 /**
@@ -8,9 +8,9 @@ import {combineReducers} from 'redux';
  */
 function addFriendEntry(state,action){
 	const {payLoad} = action ;
-	const {id,name } = payLoad;
+	const {id } = payLoad;
 
-	const friend =  {id : id, name : name};
+	const friend =  {id : id, name : null};
 
 	return {
 		...state,
@@ -57,6 +57,24 @@ function removeFriendId(state,action){
 	return state.filter(friendId=> friendId!==id);
 }
 
+/**
+ * [setFriendName Update a friend label ]
+ * @param {Object} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function setFriendName(state,action){
+	const {payLoad} = action;
+	const{id,name} = payLoad;
+
+	return Object.keys(state).reduce((obj,key)=>{
+		obj[key] =state[key];
+		if(state[key].id === id){
+			obj[key].name = name;
+		}
+		return obj;
+	},{})
+}
+
 
 
 /**
@@ -69,6 +87,7 @@ function friendsById(state = {},action){
 	switch (action.type) {
 		case ADD_FRIEND: return addFriendEntry(state,action);
 		case REMOVE_FRIEND : return removeFriendEntry(state,action);
+		case SET_FRIEND_NAME : return setFriendName(state,action);
 		default: return state;
 
 	}

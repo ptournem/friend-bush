@@ -6,6 +6,7 @@ import uuid from 'uuid/v1';
 
 // Friends
 export const ADD_FRIEND = 'ADD_FRIEND';
+export const SET_FRIEND_NAME = 'SET_FRIEND_NAME';
 export const REMOVE_FRIEND = 'REMOVE_FRIEND';
 
 // Payements
@@ -47,12 +48,23 @@ const actionCreator = (type,payLoad) => {
 
 /**
  * [addFriend action creator to add a friend ]
+ * @return {Object}    [Action]
+ */
+export const addFriend = ()  => {
+    return actionCreator(ADD_FRIEND,{
+	    id : FRIEND_NAME + "_" + uuid()
+    });
+};
+
+/**
+ * [setFriendName action creator to set a friend name]
+ * @param  {String} id [friend id]
  * @param {String} name [name]
  * @return {Object}    [Action]
  */
-export const addFriend = name  => {
-    return actionCreator(ADD_FRIEND,{
-	    id : FRIEND_NAME + "_" + uuid(),
+export const setFriendName = (id,name)  => {
+    return actionCreator(SET_FRIEND_NAME,{
+	    id : id,
       name : name
     });
 };
@@ -72,8 +84,6 @@ export const removeFriend = id  => {
 
 /**
  * [addPayement action creator to create a payement]
- * @param {String} label [label]
- * @param {Float} cost  [cost]
  * @return {Object}    [Action]
  */
 export const addPayement = ()=> {
