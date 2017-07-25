@@ -76,11 +76,9 @@ export const removeFriend = id  => {
  * @param {Float} cost  [cost]
  * @return {Object}    [Action]
  */
-export const addPayement = (label,cost)=> {
+export const addPayement = ()=> {
   return actionCreator(ADD_PAYEMENT,{
-	id : PAYEMENT_NAME + "_" + uuid(),
-    label : label,
-    cost:cost
+	   id : PAYEMENT_NAME + "_" + uuid()
   });
 };
 

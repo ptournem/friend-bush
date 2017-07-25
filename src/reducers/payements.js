@@ -8,9 +8,9 @@ import {combineReducers} from 'redux';
  */
 function addPayementEntry(state,action){
 	const {payLoad} = action ;
-	const {id,label,cost } = payLoad;
+	const {id} = payLoad;
 
-	const payement =  {id : id, label : label, cost: cost, paidById : null,shares : []};
+	const payement =  {id : id, label : null, cost: null, paidById : null,shares : []};
 
 	return {
 		...state,
