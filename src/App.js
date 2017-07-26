@@ -1,11 +1,13 @@
 import React, { Component} from 'react';
-import AddFriend from './containers/AddFriend';
+import Friends from './containers/Friends';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <AddFriend />
+        <table>
+          <Friends />
+        </table>
       </div>
     );
   }

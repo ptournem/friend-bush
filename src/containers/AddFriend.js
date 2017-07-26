@@ -3,28 +3,15 @@ import {addFriend} from '../actions';
 import React from 'react';
 
 let AddFriend = ({dispatch}) => {
-	let input ;
-
 	return (
-		<div>
 			<form onSubmit={e=> {
 				e.preventDefault();
-				if(!input.value.trim()){
-					return;
-				}
-				dispatch(addFriend(input.value));
-				input.value = '';
-			}}>
-				<input
-					ref = {node => {
-						input = node ;
-					}}
-				/>
+				dispatch(addFriend());
+				}}>
 				<button type="submit">
-					Add friend
+					+
 				</button>
 			</form>
-		</div>
 	);
 }
 
