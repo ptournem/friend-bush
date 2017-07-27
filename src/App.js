@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import Friends from './containers/Friends';
+import Payements from './containers/Payements';
 
 class App extends Component {
   render() {
@@ -7,6 +8,7 @@ class App extends Component {
       <div className="App">
         <table>
           <Friends />
+          <Payements />
         </table>
       </div>
     );
