@@ -125,7 +125,7 @@ export const setPayementLabel = (id,label)=> {
  * @return {Object}    [Action]
  */
 export const setPayementPaidBy = (id,paidById)=> {
-  return actionCreator(SET_PAYEMENT_LABEL,{
+  return actionCreator(SET_PAYEMENT_PAID_BY,{
     id : id,
     paidById : paidById
   });
