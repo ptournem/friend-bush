@@ -2,16 +2,15 @@ import React from 'react';
 import Payement from './Payement';
 import AddPayement from '../containers/AddPayement';
 
-const PayementList =  ({payementsById, payements, friends, friendsById, onSetPayementLabel, onSetPayementCost, onRemovePayement, onSetPayementPaidBy }) => (
+const PayementList =  ({payements, friends, friendsById, onSetPayementLabel, onSetPayementCost, onRemovePayement, onSetPayementPaidBy }) => (
   <tbody>
       {payements.map(payement => (
-         <Payement key={payement} {...payementsById[payement]}
+         <Payement key={payement.get('id')} payement={payement}
            friends={friends}
-           friendsById={friendsById}
-           onSetPayementLabel={(label)=>onSetPayementLabel(payement,label)}
-           onSetPayementCost={(cost)=>onSetPayementCost(payement,cost)}
-           onSetPayementPaidBy={(paidById)=>onSetPayementPaidBy(payement,paidById)}
-           onRemovePayement={()=>onRemovePayement(payement)} />
+           onSetPayementLabel={(label)=>onSetPayementLabel(payement.get('id'),label)}
+           onSetPayementCost={(cost)=>onSetPayementCost(payement.get('id'),cost)}
+           onSetPayementPaidBy={(paidById)=>onSetPayementPaidBy(payement.get('id'),paidById)}
+           onRemovePayement={()=>onRemovePayement(payement.get('id'))} />
       ))}
 
       <tr>

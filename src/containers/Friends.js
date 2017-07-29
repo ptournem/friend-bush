@@ -4,8 +4,7 @@ import FriendList from '../components/FriendList';
 
 const mapStateToProps = state => {
 	return  {
-		friendsById : state.friends.byId,
-		friends : state.friends.allIds
+		friends : state.friends.allIds.map(id=> state.friends.byId.get(id))
 	};
 }
 

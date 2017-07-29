@@ -1,9 +1,10 @@
-import {ADD_PAYEMENT, SET_PAYEMENT_COST, SET_PAYEMENT_LABEL,SET_PAYEMENT_PAID_BY, REMOVE_PAYEMENT} from '../actions';
+import {ADD_PAYEMENT, SET_PAYEMENT_COST, SET_PAYEMENT_LABEL,SET_PAYEMENT_PAID_BY, REMOVE_PAYEMENT,ADD_SHARE, REMOVE_FRIEND} from '../actions';
 import {combineReducers} from 'redux';
+import {List,Map, fromJS} from 'immutable';
 
 /**
  * [addPayementEntry Add a payement in byId]
- * @param {Object} state  [current state]
+ * @param {Map} state  [current state]
  * @param {Object} action [action to handle]
  */
 function addPayementEntry(state,action){
@@ -12,85 +13,67 @@ function addPayementEntry(state,action){
 
 	const payement =  {id : id, label : null, cost: null, paidById : null,shares : []};
 
-	return {
-		...state,
-		[id] : payement
-	};
+	return state.set(id,fromJS(payement));
 }
 
 /**
  * [addPayementId Add a payement in allIds]
- * @param {Array} state  [current state]
+ * @param {List} state  [current state]
  * @param {Object} action [action to handle]
  */
 function addPayementId(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
 
-	return state.concat(id);
+	return state.push(id);
 }
 
 /**
  * [removePayementEntry Remove a payement in byId]
- * @param {Array} state  [current state]
+ * @param {Map} state  [current state]
  * @param {Object} action [action to handle]
  */
 function removePayementEntry(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
 
-	return  Object.keys(state).filter(payementId=>  payementId!==id).reduce((obj,key)=>{
-		obj[key]=state[key];
-		return obj
-	},{});
+	return  state.delete(id);
 }
 
 /**
  * [removePayementId Remove a payement from allIds]
- * @param {Array} state  [current state]
+ * @param {List} state  [current state]
  * @param {Object} action [action to handle]
  */
 function removePayementId(state,action){
 	const {payLoad} = action ;
 	const {id} = payLoad;
 
-	return state.filter(payementId=> payementId!==id);
+	return state.delete(state.indexOf(id));
 }
 
 /**
  * [setPayementCost Update a payement cost ]
- * @param {Object} state  [current state]
+ * @param {Map} state  [current state]
  * @param {Object} action [action to handle]
  */
 function setPayementCost(state,action){
 	const {payLoad} = action;
 	const{id,cost} = payLoad;
 
-	return Object.keys(state).reduce((obj,key)=>{
-		obj[key] =state[key];
-		if(state[key].id === id){
-			obj[key].cost = cost;
-		}
-		return obj;
-	},{})
+	return state.update(id, payement => payement.set('cost',cost));
 }
 
 /**
  * [setPayementLabel Update a payement label]
- * @param {Object} state  [current state]
+ * @param {Map} state  [current state]
  * @param {Object} action [action to handle]
  */
 function setPayementLabel(state,action){
 	const {payLoad} = action;
 	const{id,label} = payLoad;
 
-	return Object.keys(state).reduce((obj,key)=>{
-		obj[key] =state[key];
-		if(state[key].id === id){
-			obj[key].label = label;
-		}
-		return obj;
-	},{})
+	return state.update(id, payement => payement.set('label',label));
 }
 
 /**
@@ -102,29 +85,56 @@ function setPayementPaidBy(state,action){
 	const {payLoad} = action;
 	const{id,paidById} = payLoad;
 
-	return Object.keys(state).reduce((obj,key)=>{
-		obj[key] =state[key];
-		if(state[key].id === id){
-			obj[key].paidById = paidById;
-		}
-		return obj;
-	},{})
+	return state.update(id, payement => payement.set('paidById',paidById));
 }
 
+/**
+ * [setPayementShares add a payement share]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function setPayementShares(state,action){
+	const {payLoad} = action;
+	const{id,payementId} = payLoad;
+
+	return state.update(payementId, p => p.update('shares', s => s.push(id)));
+}
+
+/**
+ * [handleRemoveFriend handle remove friend]
+ * @param  {Map} state  [current state]
+ * @param  {Object} action [action to handle]
+ */
+function handleRemoveFriend(state,action){
+	const {payLoad} = action;
+	const{id} = payLoad;
+
+	return state.map(p => {
+		if(p.get('paidById') === id){
+			return p.set('paidById', null);
+		}
+		return p;
+	})
+}
 
 /**
  * [payementsById Handle action for byId object]
- * @param {Object} [state={}] [current state]
+ * @param {Map} [state=null] [current state]
  * @param {Object} action [action to handle]
  * @return {Object}            [next state]
  */
-function payementsById(state = {},action){
+function payementsById(state = null,action){
+	if(state === null){
+		state = Map();
+	}
 	switch (action.type) {
 		case ADD_PAYEMENT: return addPayementEntry(state,action);
 		case SET_PAYEMENT_COST: return setPayementCost(state,action);
 		case SET_PAYEMENT_LABEL: return setPayementLabel(state,action);
 		case SET_PAYEMENT_PAID_BY: return setPayementPaidBy(state,action);
 		case REMOVE_PAYEMENT : return removePayementEntry(state,action);
+		case ADD_SHARE : return setPayementShares(state,action);
+		case REMOVE_FRIEND : return handleRemoveFriend(state,action);
 		default: return state;
 
 	}
@@ -132,11 +142,14 @@ function payementsById(state = {},action){
 
 /**
  * [allPayements Handle action for allIds object]
- * @param {Array} [state=[]]  [current state]
+ * @param {List} [state=null]  [current state]
  * @param {Object} action [action to handle]
  * @return {Array}            [next state]
  */
-function allPayements(state = [],action){
+function allPayements(state = null,action){
+	if(state===null){
+		state = List();
+	}
 	switch (action.type) {
 		case ADD_PAYEMENT: return addPayementId(state,action);
 		case REMOVE_PAYEMENT : return removePayementId(state,action);

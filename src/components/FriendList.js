@@ -2,16 +2,16 @@ import React from 'react';
 import Friend from './Friend';
 import AddFriend from '../containers/AddFriend';
 
-const FriendList =  ({friendsById, friends, onSetFriendName, onRemoveFriend }) => (
+const FriendList =  ({friends, onSetFriendName, onRemoveFriend }) => (
   <thead>
     <tr>
       <th>Payement</th>
       <th>Cost</th>
       <th>Paid By</th>
       {friends.map(friend => (
-         <Friend key={friendsById[friend].id} {...friendsById[friend]}
-           onSetFriendName={(name)=>onSetFriendName(friend,name)}
-           onRemoveFriend={()=>onRemoveFriend(friend)} />
+         <Friend key={friend.get("id")} friend={friend}
+           onSetFriendName={(name)=>onSetFriendName(friend.get('id'),name)}
+           onRemoveFriend={()=>onRemoveFriend(friend.get('id'))} />
       ))}
 
       <th>

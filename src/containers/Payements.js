@@ -4,10 +4,8 @@ import PayementList from '../components/PayementList';
 
 const mapStateToProps = state => {
 	return  {
-		payementsById : state.payements.byId,
-		payements : state.payements.allIds,
-		friendsById : state.friends.byId,
-		friends : state.friends.allIds
+		payements : state.payements.allIds.map(id=> state.payements.byId.get(id)),
+		friends : state.friends.allIds.map(id=> state.friends.byId.get(id))
 	};
 }
 
