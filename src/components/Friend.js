@@ -1,12 +1,11 @@
 import React from 'react';
 
-const Friend = ({ onRemoveFriend, onSetFriendName, friend }) => {
-  let input ;
-
-  return(
-  <th>
-    <input type="text"
-      value={friend.get("name")===null?"":friend.get("name")}
+const Friend = ({ onRemoveFriend, onSetFriendName, friend , account }) => {
+  let input = null ;
+  let display = friend.get('name')===null?"":friend.get('name');
+  if(!account){
+    display = <input type="text"
+      value={display}
       onChange={(e)=>{
         e.preventDefault()
         if(input.value === ""){
@@ -21,12 +20,19 @@ const Friend = ({ onRemoveFriend, onSetFriendName, friend }) => {
         onSetFriendName(input.value);
       }}
       ref={node => {input = node;}}
-      />
-    <button onClick={()=>{
-        onRemoveFriend()
-      }}>
-      x
-    </button>
+      />;
+  }
+
+  return(
+  <th>
+    {display}
+    {!account &&
+      <button onClick={()=>{
+          onRemoveFriend()
+        }}>
+        x
+      </button>
+    }
   </th>);
 }
 

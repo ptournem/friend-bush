@@ -42,7 +42,7 @@ const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSe
     <td>
       <select value={payement.get('paidById')==null?"":payement.get('paidById')}
         onChange={(e)=>{
-          onSetPayementPaidBy(paidBySelect.value);
+          onSetPayementPaidBy(paidBySelect.value===""?null:paidBySelect.value);
         }}
         ref={node => {paidBySelect = node;}}>
           <option value={""}>----------</option>
