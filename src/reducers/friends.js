@@ -1,4 +1,4 @@
-import {ADD_FRIEND, REMOVE_FRIEND, SET_FRIEND_NAME } from '../actions';
+import {ADD_FRIEND, REMOVE_FRIEND, SET_FRIEND_NAME, LOAD_JSON,RESET } from '../actions';
 import {combineReducers} from 'redux';
 import {List,Map, fromJS} from 'immutable';
 
@@ -64,7 +64,47 @@ function setFriendName(state,action){
 	return state.update(id,friend => friend.set("name",name));
 }
 
+/**
+ * [resetEntry reset entries]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function resetEntry(state,action){
+	return fromJS({});
+}
 
+/**
+ * [resetId reset ids]
+ * @param {List} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function resetId(state,action){
+	return fromJS([]);
+}
+
+/**
+ * [loadJsonEntry load byId from json]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function loadJsonEntry(state,action){
+	const{payLoad} = action;
+	const{data} = payLoad;
+	const{friends} = data;
+	return fromJS(friends.byId);
+}
+
+/**
+ * [loadJsonId load allIds from json]
+ * @param {List} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function loadJsonId(state,action){
+	const{payLoad} = action;
+	const{data} = payLoad;
+	const{friends} = data;
+	return fromJS(friends.allIds);
+}
 
 /**
  * [friendsById Handle action for byId object]
@@ -80,6 +120,8 @@ function friendsById(state = null,action){
 		case ADD_FRIEND: return addFriendEntry(state,action);
 		case REMOVE_FRIEND : return removeFriendEntry(state,action);
 		case SET_FRIEND_NAME : return setFriendName(state,action);
+		case LOAD_JSON : return loadJsonEntry(state,action);
+		case RESET : return resetEntry(state,action);
 		default: return state;
 
 	}
@@ -99,6 +141,8 @@ function allFriends(state = null,action){
 	switch (action.type) {
 		case ADD_FRIEND: return addFriendId(state,action);
 		case REMOVE_FRIEND : return removeFriendId(state,action);
+		case LOAD_JSON : return loadJsonId(state,action);
+		case RESET : return resetId(state,action);
 		default: return state;
 
 	}

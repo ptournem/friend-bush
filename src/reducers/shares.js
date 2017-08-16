@@ -1,4 +1,4 @@
-import {ADD_SHARE, REMOVE_SHARE,SET_SHARE_WEIGHT} from '../actions';
+import {ADD_SHARE, REMOVE_SHARE,SET_SHARE_WEIGHT, LOAD_JSON, RESET} from '../actions';
 import {combineReducers} from 'redux';
 import {List,Map, fromJS} from 'immutable';
 
@@ -42,6 +42,48 @@ function removeShareEntry(state,action){
 }
 
 /**
+ * [loadJsonEntry load byId from json]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function loadJsonEntry(state,action){
+	const{payLoad} = action;
+	const{data} = payLoad;
+	const{shares} = data;
+	return fromJS(shares.byId);
+}
+
+/**
+ * [loadJsonId load allIds from json]
+ * @param {List} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function loadJsonId(state,action){
+	const{payLoad} = action;
+	const{data} = payLoad;
+	const{shares} = data;
+	return fromJS(shares.allIds);
+}
+
+/**
+ * [resetEntry reset entries]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function resetEntry(state,action){
+	return fromJS({});
+}
+
+/**
+ * [resetId reset ids]
+ * @param {List} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function resetId(state,action){
+	return fromJS([]);
+}
+
+/**
  * [removeShareId Remove a share from allIds]
  * @param {List} state  [current state]
  * @param {Object} action [action to handle]
@@ -80,6 +122,8 @@ function sharesById(state = null,action){
 		case ADD_SHARE: return addShareEntry(state,action);
 		case SET_SHARE_WEIGHT: return  setShareWeight(state,action);
 		case REMOVE_SHARE : return  removeShareEntry(state,action);
+		case LOAD_JSON : return loadJsonEntry(state,action);
+		case RESET : return resetEntry(state,action);
 		default: return state;
 
 	}
@@ -98,6 +142,8 @@ function allShares(state = null,action){
 	switch (action.type) {
 		case ADD_SHARE: return addShareId(state,action);
 		case REMOVE_SHARE : return  removeShareId(state,action);
+		case LOAD_JSON : return loadJsonId(state,action);
+		case RESET : return resetId(state,action);
 		default: return state;
 
 	}

@@ -4,6 +4,11 @@ import uuid from 'uuid/v1';
  * Action types
  */
 
+// Project
+export const SET_PROJECT_NAME = "SET_PROJECT_NAME";
+export const LOAD_JSON = "LOAD_JSON";
+export const RESET = "RESET";
+
 // Friends
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const SET_FRIEND_NAME = 'SET_FRIEND_NAME';
@@ -180,4 +185,34 @@ export const removeShare = (id)=> {
   return actionCreator(REMOVE_SHARE,{
     id : id
   });
+};
+
+/**
+ * [setProjectName action creator to set project name]
+ * @param  {String} name [project name]
+ * @return {Object}    [action]
+ */
+export const setProjectName = (name)=> {
+  return actionCreator(SET_PROJECT_NAME,{
+    name
+  });
+};
+
+/**
+ * [loadJson action creator to load project from json data]
+ * @param  {Object} data [project data]
+ * @return {Object}    [action]
+ */
+export const loadJson = (data)=> {
+  return actionCreator(LOAD_JSON,{
+    data
+  });
+};
+
+/**
+ * [reset action creator to reset to new project]
+ * @return {Object}    [action]
+ */
+export const reset = ()=> {
+  return actionCreator(RESET,{});
 };

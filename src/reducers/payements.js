@@ -1,4 +1,4 @@
-import {ADD_PAYEMENT, SET_PAYEMENT_COST, SET_PAYEMENT_LABEL,SET_PAYEMENT_PAID_BY, REMOVE_PAYEMENT,ADD_SHARE, REMOVE_FRIEND} from '../actions';
+import {ADD_PAYEMENT, SET_PAYEMENT_COST, SET_PAYEMENT_LABEL,SET_PAYEMENT_PAID_BY, REMOVE_PAYEMENT,ADD_SHARE, REMOVE_FRIEND, LOAD_JSON, RESET} from '../actions';
 import {combineReducers} from 'redux';
 import {List,Map, fromJS} from 'immutable';
 
@@ -118,6 +118,48 @@ function handleRemoveFriend(state,action){
 }
 
 /**
+ * [loadJsonEntry load byId from json]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function loadJsonEntry(state,action){
+	const{payLoad} = action;
+	const{data} = payLoad;
+	const{payements} = data;
+	return fromJS(payements.byId);
+}
+
+/**
+ * [loadJsonId load allIds from json]
+ * @param {List} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function loadJsonId(state,action){
+	const{payLoad} = action;
+	const{data} = payLoad;
+	const{payements} = data;
+	return fromJS(payements.allIds);
+}
+
+/**
+ * [resetEntry reset entries]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function resetEntry(state,action){
+	return fromJS({});
+}
+
+/**
+ * [resetId reset ids]
+ * @param {List} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function resetId(state,action){
+	return fromJS([]);
+}
+
+/**
  * [payementsById Handle action for byId object]
  * @param {Map} [state=null] [current state]
  * @param {Object} action [action to handle]
@@ -135,6 +177,8 @@ function payementsById(state = null,action){
 		case REMOVE_PAYEMENT : return removePayementEntry(state,action);
 		case ADD_SHARE : return setPayementShares(state,action);
 		case REMOVE_FRIEND : return handleRemoveFriend(state,action);
+		case LOAD_JSON : return loadJsonEntry(state,action);
+		case RESET : return resetEntry(state,action);
 		default: return state;
 
 	}
@@ -153,6 +197,8 @@ function allPayements(state = null,action){
 	switch (action.type) {
 		case ADD_PAYEMENT: return addPayementId(state,action);
 		case REMOVE_PAYEMENT : return removePayementId(state,action);
+		case LOAD_JSON : return loadJsonId(state,action);
+		case RESET : return resetId(state,action);
 		default: return state;
 
 	}
