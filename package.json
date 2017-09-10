@@ -6,7 +6,10 @@
     "react-scripts": "1.0.10"
   },
   "dependencies": {
+    "flexboxgrid": "^6.3.1",
     "immutable": "^3.8.1",
+    "jquery-slimscroll": "^1.3.8",
+    "node-sass-chokidar": "0.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
@@ -17,6 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/assets/scss/app.scss -o src/assets/css/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/assets/scss/app.scss -o src/assets/css/ --watch --recursive"
   }
 }
