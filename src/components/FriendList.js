@@ -1,21 +1,21 @@
 import React from 'react';
 import Friend from './Friend';
-import AddFriend from '../containers/AddFriend';
 
 const FriendList =  ({friends, onSetFriendName, onRemoveFriend, account }) => {
-  const header = account ?['']:['Payement', 'Cost', 'Paid by'];
-  const append = account ? 'Total' :<AddFriend /> ;
-
+  const header = ['Payement', 'Cost', 'Paid by'];
+  const append = [''];
   return (
     <thead>
       <tr>
         {header.map(name => <th key={name}>{name}</th>)}
         {friends.map(friend => (
-           <Friend key={friend.get("id")} friend={friend}
-             onSetFriendName={(name)=>onSetFriendName(friend.get('id'),name)}
-             onRemoveFriend={()=>onRemoveFriend(friend.get('id'))} account={account} />
+           <th key={friend.get("id")}>
+             <Friend  friend={friend}
+               onSetFriendName={(name)=>onSetFriendName(friend.get('id'),name)}
+               onRemoveFriend={()=>onRemoveFriend(friend.get('id'))} account={account} />
+           </th>
         ))}
-        <td>{append}</td>
+        {append.map( label=> <th key={label}>{label}</th>)}
 
       </tr>
     </thead>

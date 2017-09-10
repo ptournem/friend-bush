@@ -3,9 +3,10 @@ import React from 'react';
 const Friend = ({ onRemoveFriend, onSetFriendName, friend , account }) => {
   let input = null ;
   let display = friend.get('name')===null?"":friend.get('name');
-  if(!account){
+  if(account===true){
     display = <input type="text"
       value={display}
+      placeholder="no name"
       onChange={(e)=>{
         e.preventDefault()
         if(input.value === ""){
@@ -24,16 +25,16 @@ const Friend = ({ onRemoveFriend, onSetFriendName, friend , account }) => {
   }
 
   return(
-  <th>
+  <div>
     {display}
-    {!account &&
+    {account === true &&
       <button onClick={()=>{
           onRemoveFriend()
         }}>
         x
       </button>
     }
-  </th>);
+  </div>);
 }
 
 export default Friend;

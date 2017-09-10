@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-import {removeFriend, setFriendName} from '../actions';
 import FriendList from '../components/FriendList';
 
 const mapStateToProps = (state,ownProps) => {
@@ -10,14 +9,7 @@ const mapStateToProps = (state,ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => {
-	return {
-		onRemoveFriend: (id) => {
-			dispatch(removeFriend(id));
-		},
-		onSetFriendName: (id, name)=> {
-			dispatch(setFriendName(id,name));
-		}
-	}
+	return {}
 }
 
 const Friends = connect(

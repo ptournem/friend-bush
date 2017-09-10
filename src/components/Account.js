@@ -1,6 +1,8 @@
 import React from 'react';
+import AddFriend from '../containers/AddFriend';
+import Friend from '../containers/Friend';
 
-const Account = ({accounts}) => {
+const Account = ({accounts, friends}) => {
 
   let totalPaid = 0;
   let totalOwed = 0;
@@ -8,42 +10,33 @@ const Account = ({accounts}) => {
     totalPaid += parseFloat(acc.get('paid').toFixed(2));
     totalOwed += parseFloat(acc.get('owed').toFixed(2));
   })
+  const row = friends.map(friend => {
+    const acc = accounts.get(friend.get('id'));
+    const rest = acc.get('paid')-acc.get('owed');
+    return (
+      <tr key={friend.get('id')}>
+        <td> <Friend id={friend.get('id')} account={true} /></td>
+        <td>{acc.get('paid').toFixed(2)}</td>
+        <td>{acc.get('owed').toFixed(2)}</td>
+        <td>{rest.toFixed(2)}</td>
+      </tr>
+    )
+  })
+
   return (
-  <tbody>
-    <tr>
-      <td>Paid</td>
-      {accounts.valueSeq().map(acc => {
-        return (
-          <td key={acc.get('id')}>
-            {acc.get('paid').toFixed(2)}
-          </td>
-        )}
-      )}
-      <td>{totalPaid.toFixed(2)}</td>
-    </tr>
-    <tr>
-      <td>Owed</td>
-      {accounts.valueSeq().map(acc => {
-        return (
-          <td key={acc.get('id')}>
-            {acc.get('owed').toFixed(2)}
-          </td>
-        )}
-      )}
-      <td>{totalOwed.toFixed(2)}</td>
-    </tr>
-    <tr>
-      <td>Rest</td>
-      {accounts.valueSeq().map(acc => {
-        return (
-          <td key={acc.get('id')}>
-            {(acc.get('paid') -  acc.get('owed')).toFixed(2)}
-          </td>
-        )}
-      )}
-      <td>{(totalPaid -totalOwed).toFixed(2)}</td>
-    </tr>
-  </tbody>
-)}
+    <tbody>
+      {row}
+      <tr>
+        <td>Total</td>
+        <td>{totalPaid.toFixed(2)}</td>
+        <td>{totalOwed.toFixed(2)}</td>
+        <td>{(totalPaid - totalOwed).toFixed(2)}</td>
+      </tr>
+      <tr>
+        <td><AddFriend /></td>
+      </tr>
+    </tbody>
+  );
+}
 
 export default Account;

@@ -7,6 +7,7 @@ const Share = ({share, onSetWeight}) => {
   <td>
     <input type="text"
       value={share.get('weight')}
+      className="share"
       onChange={(e)=>{
         e.preventDefault();
         if(input.value === ""){

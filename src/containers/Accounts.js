@@ -38,7 +38,8 @@ function getAccounts(state){
 
 const mapStateToProps = (state) => {
 	return  {
-		accounts : getAccounts(state)
+		accounts : getAccounts(state),
+		friends : state.friends.allIds.map(id=> state.friends.byId.get(id))
 	};
 }
 

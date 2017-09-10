@@ -1,0 +1,107 @@
+#leftPane {
+  background-color: #FFFFFF;
+  height: 100%; }
+  #leftPane #logoBlock {
+    text-align: center;
+    border-bottom: 1px solid #E66060; }
+    #leftPane #logoBlock h1 {
+      color: #E66060; }
+      #leftPane #logoBlock h1 span {
+        color: black; }
+  #leftPane #projectSelector ul {
+    border: 0;
+    font-weight: normal;
+    line-height: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-decoration: none; }
+    #leftPane #projectSelector ul li {
+      border: none;
+      color: #2a323c;
+      display: block;
+      padding: 15px 25px;
+      background-color: #ffffff;
+      font-size: 15px;
+      height: 50px !important; }
+      #leftPane #projectSelector ul li.active {
+        color: #E66060; }
+
+header {
+  width: 100%;
+  height: 70px;
+  color: #8F8F8F;
+  background-color: #2A323C; }
+  header #projectName {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: none;
+    box-shadow: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    height: 30px;
+    padding: 6px 20px 6px 12px;
+    margin-top: 14px;
+    margin-left: 15px;
+    border-radius: 30px;
+    padding-left: 20px;
+    width: 100%; }
+    header #projectName:focus {
+      border: none; }
+  header .button {
+    float: right; }
+
+.App {
+  height: calc(100% - 70px); }
+
+.button {
+  height: 36px;
+  width: 36px;
+  padding: 0 !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  line-height: 35px !important;
+  text-align: center;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #FFFFFF;
+  margin: 17px 5px;
+  cursor: pointer; }
+  .button:hover {
+    color: #E66060; }
+
+.panel {
+  width: calc(100% - 10px);
+  height: calc(100% - 20px);
+  background-color: white;
+  margin: 10px 5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1); }
+
+table {
+  width: 100%;
+  border-collapse: collapse; }
+  table thead th {
+    padding: 8px;
+    color: #666666;
+    border-bottom: 2px solid #8F8F8F;
+    text-align: left; }
+  table tbody {
+    color: #797979; }
+    table tbody tr td {
+      padding: 8px;
+      border-bottom: 1px solid #797979; }
+    table tbody tr:last-of-type td {
+      border-bottom: 0px; }
+    table tbody input {
+      border: 0px;
+      width: auto; }
+      table tbody input:focus {
+        outline: none; }
+
+input.share {
+  width: 10px; }
+
+body, html, #root, #main {
+  margin: 0px;
+  height: 100%;
+  background-color: #F5F5F5; }

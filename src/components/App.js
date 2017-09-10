@@ -3,34 +3,35 @@ import Friends from '../containers/Friends';
 import Payements from '../containers/Payements';
 import Accounts from '../containers/Accounts';
 
-const App = ({project, onSetProjectName, onReset, localProjects,onLoadFromId}) => {
-	// show all local projects
-	const projects = localProjects.map((project =>{
-		const checked = project.id=== sessionStorage['current'];
-		return (
-			<li>
-				<a href="#" onClick={(e)=>{e.preventDefault; onLoadFromId(project.id) }}>{project.name}</a>
-				{checked?' (current)':''}
-			</li>);
-	}));
+const App = ({onReset}) => {
 	return (
-		<div className="App">
-			<input type="text" value={project.get('name')} onChange={(evt)=> onSetProjectName(evt.target.value)}/>
-			<button onClick={onReset}> Reset </button>
-          <table>
-            <Friends />
-            <Payements />
-          </table>
-          <br />
-          <table>
-            <Friends account={true} />
-            <Accounts />
-          </table>
+		<div className="App row">
+			<div className="col-md-8">
+				<div className="panel">
+					<table>
+						<Friends account={false}/>
+						<Payements />
+					</table>
+				</div>
+			</div>
+      <div className="col-md-4">
+				<div className="panel">
+					<table>
+						<thead>
+							<tr>
+								<th>Friend</th>
+								<th>Paid</th>
+								<th>Owed</th>
+								<th>Rest</th>
+							</tr>
+						</thead>
+						<Accounts/>
+					</table>
+				</div>
+      </div>
 
-		  <ul>
-			  {projects}
-		  </ul>
-        </div>
+
+    </div>
 	);
 };
 

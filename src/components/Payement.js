@@ -11,6 +11,7 @@ const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSe
     <td>
       <input type="text"
         value={payement.get('label')===null?"":payement.get('label')}
+        placeholder="payement's description"
         onChange={(e)=>{
           e.preventDefault()
           if(labelInput.value === ''){
@@ -28,6 +29,7 @@ const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSe
     <td>
     <input type="text"
       value={Number.isFinite(payement.get('cost'))?payement.get('cost').toFixed(2):'0.00'}
+      placeholder="cost"
       onChange={(e)=>{
         e.preventDefault()
         if(!parseFloat(costInput.value.trim())){
