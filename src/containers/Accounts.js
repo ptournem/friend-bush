@@ -3,17 +3,26 @@ import Account from '../components/Account';
 import {Map,fromJS} from 'immutable';
 
 function getAccounts(state){
+	// init de la variable
 	let accounts = Map();
+
+	// on met à 0 chaque compte
 	state.friends.byId.forEach(f => {
 		accounts = accounts.set(f.get('id'), fromJS({id:f.get('id'), paid : 0, owed : 0}));
 	})
 
+	// on traite chaque payement
 	state.payements.byId.forEach(p =>{
+		// on ajoute au payeur
 		if(p.get('paidById') != null && Number.isFinite(p.get('cost'))){
 			accounts = accounts.update(p.get('paidById'),
-				a => a.update('paid',
-					paid => paid + p.get('cost')
-				)
+				a => {
+					if(a!== null && typeof a !== 'undefined'){
+							return a.update('paid',paid => paid + p.get('cost'));
+					}
+					return a;
+
+				}
 			);
 		}
 
@@ -25,9 +34,12 @@ function getAccounts(state){
 		if(totalWeight > 0){
 			p.get('shares').forEach( s =>{
 				accounts = accounts.update(state.shares.byId.get(s).get('owedById'),
-					a => a.update('owed',
-						owed => owed + ((p.get('cost')/totalWeight)* state.shares.byId.get(s).get('weight'))
-					)
+					a => {
+						if(a!== null && typeof a !== 'undefined'){
+								return a.update('owed', owed => owed + ((p.get('cost')/totalWeight)* state.shares.byId.get(s).get('weight')));
+						}
+						return a;
+					}
 				)
 			})
 		}
