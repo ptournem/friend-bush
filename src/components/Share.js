@@ -6,7 +6,8 @@ const Share = ({share, onSetWeight}) => {
   return(
   <td>
     <input type="text"
-      value={share.get('weight')}
+      value={share.get('weight')===0?"":share.get('weight')}
+      placeholder={0}
       className="share"
       onChange={(e)=>{
         e.preventDefault();
