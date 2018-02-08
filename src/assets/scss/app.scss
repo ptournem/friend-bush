@@ -1,5 +1,9 @@
 @import 'colors.scss';
 
+body {
+  font-family: Verdana, Helvetica;
+}
+
 #leftPane {
   background-color: $background-menu;
   height : 100%;
