@@ -4,18 +4,7 @@ import ProjectSelectorComponent from '../components/ProjectSelector';
 
 const mapStateToProps = state => {
   let projects = [];
-	for(let i = 0; i<window.localStorage.length; i++){
-		var key = window.localStorage.key(i);
-		var data = window.localStorage.getItem(key);
-		try {
-			const parsed = JSON.parse(data)
-			projects.push(parsed.project)
-		} catch(e) {
-			continue;
-		}
-
-		;
-	}
+	
 	return  {
 		localProjects : projects
 	};

@@ -4,6 +4,9 @@ import uuid from 'uuid/v1';
  * Action types
  */
 
+// user
+export const SET_USER = "SET_USER";
+
 // Project
 export const SET_PROJECT_NAME = "SET_PROJECT_NAME";
 export const LOAD_JSON = "LOAD_JSON";
@@ -215,4 +218,13 @@ export const loadJson = (data)=> {
  */
 export const reset = ()=> {
   return actionCreator(RESET,{});
+};
+
+/**
+ * [set user ]
+ * @param {Object} user [user object]
+ * @return {Object}    [action]
+ */
+export const setUser = (user)=> {
+  return actionCreator(SET_USER,{user});
 };

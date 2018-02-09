@@ -5,12 +5,12 @@ import {createStore, applyMiddleware} from 'redux';
 import App from './App';
 import friendBushApp from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-import Saver from './middleware/localStorage';
-import {loadJson} from './actions';
+import {loadJson, setUser} from './actions';
+import {auth} from './firebase';
 
 let store = createStore(
 	friendBushApp,
-	applyMiddleware(Saver)
+	applyMiddleware()
 );
 
 ReactDOM.render(
@@ -20,10 +20,6 @@ ReactDOM.render(
 	, document.getElementById('root'));
 registerServiceWorker();
 
-// chargement des données en localStorage si elles existent
-if(window.sessionStorage['current'] && window.localStorage[window.sessionStorage['current']]){
-	try {
-		const data = JSON.parse(window.localStorage[window.sessionStorage['current']]);
-		store.dispatch(loadJson(data));
-	} catch(e){}
-}
+auth.onAuthStateChanged((user) => {
+			store.dispatch(setUser(user));
+});

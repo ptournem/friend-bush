@@ -19,6 +19,20 @@ body {
     }
   }
 
+  #user-box {
+    padding : 10px;
+    text-align : center;
+    img {
+      width : 30%;
+      display : block;
+      margin : auto;
+      border-radius : 100%;
+    }
+    button {
+      margin : auto;
+    }
+  }
+
   #projectSelector {
     ul {
       border: 0;

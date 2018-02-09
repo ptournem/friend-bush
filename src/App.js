@@ -3,6 +3,7 @@ import AppContainer from './containers/App';
 import ProjectSelector from './containers/ProjectSelector';
 import ProjectName from './containers/ProjectName';
 import ResetProject from './containers/ResetProject';
+import UserConnection from './containers/UserConnection';
 import './assets/css/app.css';
 import 'flexboxgrid/css/flexboxgrid.min.css';
 
@@ -13,6 +14,9 @@ class App extends Component {
         <section id="leftPane" className="col-xs-3 col-md-2">
           <div id="logoBlock">
             <h1>Friend<span>Bush</span></h1>
+          </div>
+          <div id="user-box">
+            <UserConnection  />
           </div>
           <div id="projectSelector">
             <ProjectSelector />
