@@ -4,6 +4,17 @@ body {
   font-family: Verdana, Helvetica;
 }
 
+.logoBlock {
+  text-align:  center;
+  border-bottom : 1px solid $text-selected;
+  h1 {
+    color : $text-selected;
+    span {
+      color : black;
+    }
+  }
+}
+
 #leftPane {
   background-color: $background-menu;
   height : 100%;
@@ -174,4 +185,8 @@ body, html, #root, #main {
   margin : 0px;
   height : 100%;
   background-color: $background-fond;
+}
+
+#not-connected{
+  text-align: center;
 }

@@ -2,7 +2,9 @@ import {connect} from 'react-redux';
 import AppComponent from '../components/App';
 
 const mapStateToProps = (state,ownProps) => {
-	return  {};
+	return  {
+		user: state.user.get('user')
+	};
 }
 
 const mapDispatchToProps = dispatch => {
