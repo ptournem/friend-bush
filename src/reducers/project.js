@@ -34,8 +34,11 @@ function setProjectName(state,action){
 function loadFromJSON(state,action){
 	const{payLoad} = action;
 	const{data} = payLoad;
-	const{project} = data;
-	return fromJS(project);
+	const{id,name} = data;
+	return fromJS({
+		id,
+		name
+	});
 }
 
 /**

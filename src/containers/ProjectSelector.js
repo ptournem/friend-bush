@@ -1,28 +1,29 @@
 import {connect} from 'react-redux';
-import {loadJson} from '../actions';
+import {loadJson,reset} from '../actions';
+import {database,auth} from '../firebase';
 import ProjectSelectorComponent from '../components/ProjectSelector';
 
 const mapStateToProps = state => {
-  let projects = [];
 	
 	return  {
-		localProjects : projects
+		localProjects : state.user.get('projects')
 	};
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
     onLoadFromId : (id) => {
-			if(!window.localStorage.getItem(id)){
-				return ;
-			}
-			const data = JSON.parse(window.localStorage.getItem(id));
-			dispatch(loadJson(data));
+			database.ref('projects/'+id).once('value').then(snapshot=>{
+				if(snapshot.val() !== null){
+					dispatch(loadJson(JSON.parse(snapshot.val())));
+				}
+			})
+			
 		},
     deleteProject : (id)=>{
-      if(window.localStorage.getItem(id) && sessionStorage['current'] !== id){
-        window.localStorage.removeItem(id);
-      }
+			console.log('remove');
+			dispatch(reset());
+			database.ref('users/'+auth.currentUser.uid+'/projects/'+id).remove();
     }
 	}
 }
