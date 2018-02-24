@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
     onLoadFromId : (id) => {
-			database.ref('projects/'+id).once('value').then(snapshot=>{
+			database.ref('projects/'+id + '/data').once('value').then(snapshot=>{
 				if(snapshot.val() !== null){
 					dispatch(loadJson(JSON.parse(snapshot.val())));
 				}
@@ -23,7 +23,10 @@ const mapDispatchToProps = dispatch => {
     deleteProject : (id)=>{
 			console.log('remove');
 			dispatch(reset());
-			database.ref('users/'+auth.currentUser.uid+'/projects/'+id).remove();
+			const updates = {};
+			updates['users/'+auth.currentUser.uid+'/projects/'+id] = null;
+			updates['projects/'+ id + '/users/'+auth.currentUser.uid] = null;
+			database.ref().update(updates);
     }
 	}
 }

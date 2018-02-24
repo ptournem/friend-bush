@@ -17,7 +17,13 @@ const firebaseStorage = store => next => action => {
 	const name = project.get('name');
 	const data = {friends,shares,payements,id,name};
 	// save current project
-	database.ref('projects/'+id).set(JSON.stringify(data));
+	const updates = {};
+	updates['projects/'+id + '/data'] =JSON.stringify(data);
+	updates['projects/'+id + '/users/' + auth.currentUser.uid] = {
+			name : auth.currentUser.displayName,
+			photo : auth.currentUser.photoURL
+	} 
+	database.ref().update(updates);
 	database.ref('users/' + auth.currentUser.uid + '/projects/'+id).set(name);
 
 	return result;
