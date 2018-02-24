@@ -1,8 +1,17 @@
 Application in development which will help you to compute how many bucks each personn of a group owe you for the last event you went together
 
 toDo :
-- sur remove d'un friend , remove la share dans la list byId et alls ( attention dans payement's share)
-- mise a jours du panel de gauche sans retard
+- sur remove d'un friend, remove les share dans la list byId et alls
+- sur remove d'un friend, remove ses shares dans les payements
+- Mise à disposition d'un lien partageable / ajout d'un projet externe
+- Probleme remplissage des champs costs et weight
+
+Firebase structure :
+  - users
+    - projects : tableau avec les keys des projects auquel il participe
+  - project
+    - users : tableau des users qui participent au projet
+    - data : data du projet
 
 To develop :
   - backend:
