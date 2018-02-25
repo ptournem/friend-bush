@@ -23,8 +23,9 @@ const firebaseStorage = store => next => action => {
 			name : auth.currentUser.displayName,
 			photo : auth.currentUser.photoURL
 	} 
+	updates['users/' + auth.currentUser.uid + '/projects/'+id] = name;
+	updates['users/' + auth.currentUser.uid + '/current'] = id;
 	database.ref().update(updates);
-	database.ref('users/' + auth.currentUser.uid + '/projects/'+id).set(name);
 
 	return result;
 

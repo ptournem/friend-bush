@@ -6,7 +6,8 @@ import ProjectSelectorComponent from '../components/ProjectSelector';
 const mapStateToProps = state => {
 	
 	return  {
-		localProjects : state.user.get('projects')
+		localProjects : state.user.get('projects'),
+		current : state.user.get('current')
 	};
 }
 
@@ -21,7 +22,6 @@ const mapDispatchToProps = dispatch => {
 			
 		},
     deleteProject : (id)=>{
-			console.log('remove');
 			dispatch(reset());
 			const updates = {};
 			updates['users/'+auth.currentUser.uid+'/projects/'+id] = null;

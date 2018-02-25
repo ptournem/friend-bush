@@ -7,6 +7,7 @@ import uuid from 'uuid/v1';
 // user
 export const SET_USER = "SET_USER";
 export const SET_USER_PROJECTS = "SET_USER_PROJECTS";
+export const SET_USER_CURRENT_PROJECT = "SET_USER_CURRENT_PROJECT";
 
 // Project
 export const SET_PROJECT_NAME = "SET_PROJECT_NAME";
@@ -237,4 +238,13 @@ export const setUser = (user)=> {
  */
 export const setUserProjects = (projects)=> {
   return actionCreator(SET_USER_PROJECTS,{projects});
+};
+
+/**
+ * [set user current project]
+ * @param {Object} current [current_project string]
+ * @return {Object}    [action]
+ */
+export const setUserCurrentProject = (current)=> {
+  return actionCreator(SET_USER_CURRENT_PROJECT,{current});
 };

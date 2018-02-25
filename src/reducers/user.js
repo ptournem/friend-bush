@@ -1,12 +1,14 @@
-import {SET_USER,SET_USER_PROJECTS} from '../actions';
+import {SET_USER,SET_USER_PROJECTS, LOAD_JSON,RESET} from '../actions';
 import {fromJS} from 'immutable';
 
 function getDefaultState(){
 	const user = null;
 	const projects = [];
+	const current = null;
 	return fromJS({
     user,
-		projects
+		projects,
+		current
   });
 }
 
@@ -22,6 +24,17 @@ const setUserProjects = (state,action) => {
 	return state.set('projects', projects);
 }
 
+const loadJson = (state,action) =>{
+	const {payLoad} = action;
+	const{data} = payLoad;
+	const{id} = data;
+	return state.set('current',id);
+}
+
+const reset = (state,action) => {
+	return state.set('current',null);
+}
+
 const userReducer = (state = null,action) => {
   if(state === null){
     state = getDefaultState();
@@ -29,6 +42,8 @@ const userReducer = (state = null,action) => {
   switch(action.type){
     case SET_USER: return setUser(state,action);
 		case SET_USER_PROJECTS: return setUserProjects(state,action);
+		case LOAD_JSON: return loadJson(state,action);
+		case RESET : return reset(state,action);
     default : return state;
   }
 };

@@ -1,10 +1,9 @@
 import React from 'react';
 
-const ProjectSelector = ({localProjects,onLoadFromId,deleteProject}) => {
+const ProjectSelector = ({localProjects, current, onLoadFromId,deleteProject}) => {
 
   const projects = localProjects.map(project =>{
-    console.log(project);
-    const checked = project.id=== sessionStorage['current'];
+    const checked = project.id === current;
     return (
         <li key={project.id}  className={checked?'active':''} >
           <span onClick={(e)=>{e.preventDefault(); onLoadFromId(project.id) }}>{""+project.name}</span>

@@ -9,6 +9,7 @@ toDo :
 Firebase structure :
   - users
     - projects : tableau avec les keys des projects auquel il participe
+    - currentProjects : id du projet actuel;
   - project
     - users : tableau des users qui participent au projet
     - data : data du projet
