@@ -13,6 +13,7 @@ export const SET_USER_CURRENT_PROJECT = "SET_USER_CURRENT_PROJECT";
 export const SET_PROJECT_NAME = "SET_PROJECT_NAME";
 export const LOAD_JSON = "LOAD_JSON";
 export const RESET = "RESET";
+export const SET_ADD_PROJECT_ID = "SET_ADD_PROJECT_ID";
 
 // Friends
 export const ADD_FRIEND = 'ADD_FRIEND';
@@ -247,4 +248,13 @@ export const setUserProjects = (projects)=> {
  */
 export const setUserCurrentProject = (current)=> {
   return actionCreator(SET_USER_CURRENT_PROJECT,{current});
+};
+
+/**
+ * [set user current adding project id]
+ * @param {Object} id [project_id string]
+ * @return {Object}    [action]
+ */
+export const setAddProjectId  = (id)=> {
+  return actionCreator(SET_ADD_PROJECT_ID,{id});
 };

@@ -15,9 +15,16 @@ body {
   }
 }
 
+.projectId {
+  text-align: right;
+  color : grey;
+  margin : 10px 0px 0px 0px;
+}
+
 #leftPane {
   background-color: $background-menu;
   height : 100%;
+  position : relative;
 
   #logoBlock {
     text-align:  center;
@@ -83,6 +90,16 @@ body {
         }
       }
     }
+  }
+
+  .project-adder {
+    h4 {
+      margin : 0px;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+    position : absolute;
+    bottom : 10px;
   }
 }
 

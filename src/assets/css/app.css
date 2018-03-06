@@ -9,9 +9,15 @@ body {
     .logoBlock h1 span {
       color: black; }
 
+.projectId {
+  text-align: right;
+  color: grey;
+  margin: 10px 0px 0px 0px; }
+
 #leftPane {
   background-color: #FFFFFF;
-  height: 100%; }
+  height: 100%;
+  position: relative; }
   #leftPane #logoBlock {
     text-align: center;
     border-bottom: 1px solid #E66060; }
@@ -55,6 +61,13 @@ body {
       #leftPane #projectSelector ul li.active {
         color: #E66060;
         border-color: #E66060; }
+  #leftPane .project-adder {
+    position: absolute;
+    bottom: 10px; }
+    #leftPane .project-adder h4 {
+      margin: 0px;
+      margin-bottom: 5px;
+      text-align: center; }
 
 header {
   width: 100%;

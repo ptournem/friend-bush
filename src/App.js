@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import AppContainer from './containers/App';
 import ProjectSelector from './containers/ProjectSelector';
 import UserConnection from './containers/UserConnection';
+import ProjectAdder from './containers/ProjectAdder';
 import './assets/css/app.css';
 import 'flexboxgrid/css/flexboxgrid.min.css';
 
@@ -19,8 +20,9 @@ class App extends Component {
           <div id="projectSelector">
             <ProjectSelector />
           </div>
+          <ProjectAdder />
         </section>
-        <div id="center" className="col-xs-9 col-md-10">        
+        <div id="center" className="col-xs-9 col-md-10">
             <AppContainer />
         </div>
       </div>

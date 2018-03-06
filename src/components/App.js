@@ -5,9 +5,9 @@ import Accounts from '../containers/Accounts';
 import ProjectName from '../containers/ProjectName';
 import ResetProject from '../containers/ResetProject';
 
-const App = ({user}) => {
+const App = ({user, current}) => {
 	if(!user){
-		return (			
+		return (
 			<div className="App row">
 				<div className="col-md-12" id="not-connected">
 					<div className="logoBlock">
@@ -20,7 +20,7 @@ const App = ({user}) => {
 			</div>
 		)
 	}
-	
+
 	return (
 		<div>
 			<div className="row">
@@ -32,8 +32,11 @@ const App = ({user}) => {
 							<div className="col-xs-3">
 									<ResetProject />
 							</div>
-					</div>                              
+					</div>
 				</header>
+			</div>
+			<div className="projectId">
+				{current}
 			</div>
 			<div className="App row">
 				<div className="col-md-8">
