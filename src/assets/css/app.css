@@ -39,15 +39,22 @@ body {
     position: relative;
     text-decoration: none; }
     #leftPane #projectSelector ul li {
+      cursor: pointer;
       border: none;
       color: #2a323c;
       display: block;
       padding: 15px 25px;
-      background-color: #ffffff;
+      background-color: #fefefe;
       font-size: 15px;
-      height: 50px !important; }
+      border-bottom: 1px solid grey; }
+      #leftPane #projectSelector ul li .deleteProject {
+        display: none;
+        float: right; }
+      #leftPane #projectSelector ul li:hover .deleteProject {
+        display: block; }
       #leftPane #projectSelector ul li.active {
-        color: #E66060; }
+        color: #E66060;
+        border-color: #E66060; }
 
 header {
   width: 100%;

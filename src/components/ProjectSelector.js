@@ -6,8 +6,8 @@ const ProjectSelector = ({localProjects, current, onLoadFromId,deleteProject}) =
     const checked = project.id === current;
     return (
         <li key={project.id}  className={checked?'active':''} >
-          <span onClick={(e)=>{e.preventDefault(); onLoadFromId(project.id) }}>{""+project.name}</span>
-          <button onClick={()=>deleteProject(project.id)}>x</button>
+          <span onClick={(e)=>{e.preventDefault(); onLoadFromId(project.id) }}>{checked ? 'x' : '>'} {""+project.name}</span>
+          <button className="deleteProject" onClick={()=>deleteProject(project.id)}>x</button>
         </li>);
   });
 

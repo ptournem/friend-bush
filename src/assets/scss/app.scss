@@ -56,17 +56,30 @@ body {
       text-decoration: none;
 
       li {
+        cursor: pointer;
         border : none;
         color: #2a323c;
         display: block;
         padding: 15px 25px;
-        background-color: #ffffff;
+        background-color: #fefefe;
         font-size: 15px;
-        height: 50px !important;
+        border-bottom: 1px solid grey;
+
+        .deleteProject {
+          display: none;
+          float : right;
+        }
+
+        &:hover {
+          .deleteProject {
+            display: block;
+          }
+        }
 
 
         &.active {
           color : $text-selected;
+          border-color:  $text-selected;
         }
       }
     }
