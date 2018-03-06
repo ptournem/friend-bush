@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => {
         if(snapshot.val() !== null){
           const updates = {};
           updates['users/'+auth.currentUser.uid+'/projects/project_'+id]= (snapshot.val().name ? snapshot.val().name : 'no-name');
-          updates['projects/project'+id + "/users/"+auth.currentUser.uid+"/name"] = auth.currentUser.displayName;
-          updates['projects/project'+id + "/users/"+auth.currentUser.uid+"/photo"] = auth.currentUser.photoURL;
+          updates['projects/project_'+id + "/users/"+auth.currentUser.uid+"/name"] = auth.currentUser.displayName;
+          updates['projects/project_'+id + "/users/"+auth.currentUser.uid+"/photo"] = auth.currentUser.photoURL;
           database.ref().update(updates);
           dispatch(setAddProjectId(''));
         }
