@@ -6,6 +6,7 @@ import {auth,database} from '../firebase';
 const mapStateToProps = (state) => {
   const projectId = state.user.get('projectId');
   return {
+    user : state.user.get('user'),
     projectId
   };
 };

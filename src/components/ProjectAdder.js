@@ -1,6 +1,12 @@
 import React from 'react';
 
-const ProjectAdder=  ({projectId, onSetProjectId, onValidate})=> {
+const ProjectAdder=  ({user,projectId, onSetProjectId, onValidate})=> {
+  // si non connecté
+  if(!user){
+    return null;
+  }
+
+
   return (
     <div className="project-adder">
       <h4> Ajouter un projet</h4>

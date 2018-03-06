@@ -17,7 +17,12 @@ function getDefaultState(){
 const setUser = (state,action) => {
   const {payLoad} = action;
   const {user} = payLoad;
-  return state.set('user',user);
+
+	if(user === null){
+		return getDefaultState();
+	}
+
+  return  state.set('user',user);
 }
 
 const setUserProjects = (state,action) => {
