@@ -2,7 +2,7 @@ import {SET_PROJECT_NAME, LOAD_JSON, RESET } from '../actions';
 import {fromJS} from 'immutable';
 import uuid from 'uuid/v1';
 
-const defaultName = "Nouveau Projet";
+const defaultName = "New Project";
 
 /**
  * [getDefaultState generate a default state]

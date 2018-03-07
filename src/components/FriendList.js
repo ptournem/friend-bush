@@ -2,7 +2,7 @@ import React from 'react';
 import Friend from './Friend';
 
 const FriendList =  ({friends, onSetFriendName, onRemoveFriend, account }) => {
-  const header = ['Payement', 'Cost', 'Paid by'];
+  const header = ['Payement', 'Price', 'Paid by'];
   const append = [''];
   return (
     <thead>

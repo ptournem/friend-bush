@@ -9,9 +9,9 @@ const ProjectAdder=  ({user,projectId, onSetProjectId, onValidate})=> {
 
   return (
     <div className="project-adder">
-      <h4> Ajouter un projet</h4>
+      <h4> Add a friend project</h4>
       <input type="text" value={projectId} onChange={onSetProjectId} />
-      <button title="Reset" onClick={()=>onValidate(projectId)}> Ajouter </button>
+      <button title="Reset" onClick={()=>onValidate(projectId)}> Add </button>
     </div>
   );
 }

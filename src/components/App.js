@@ -14,7 +14,7 @@ const App = ({user, current}) => {
 						<h1>Friend<span>Bush</span></h1>
 					</div>
 					<h1>
-						Veuillez-vous connecter pour accéder à vos projets!
+						You have to be connected to use the application
 					</h1>
 				</div>
 			</div>
