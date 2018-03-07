@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => {
 				}
 
 				// on s'abonne ensuite au project sélectionné
-				database.ref('projects/'+id + '/data';).on('value',snapshot=>{
+				database.ref('projects/'+id + '/data').on('value',snapshot=>{
 					if(snapshot.val() !== null){
 						dispatch(loadJson(JSON.parse(snapshot.val())));
 					}

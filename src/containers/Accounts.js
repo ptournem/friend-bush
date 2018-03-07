@@ -13,12 +13,15 @@ function getAccounts(state){
 
 	// on traite chaque payement
 	state.payements.byId.forEach(p =>{
+		let cost = parseFloat(("" + p.get('cost')).replace(',','.'));
+		cost = cost ? cost : 0;
+
 		// on ajoute au payeur
 		if(p.get('paidById') != null && Number.isFinite(p.get('cost'))){
 			accounts = accounts.update(p.get('paidById'),
 				a => {
 					if(a!== null && typeof a !== 'undefined'){
-							return a.update('paid',paid => paid + p.get('cost'));
+							return a.update('paid',paid => paid + cost);
 					}
 					return a;
 
@@ -40,7 +43,7 @@ function getAccounts(state){
 				accounts = accounts.update(state.shares.byId.get(s).get('owedById'),
 					a => {
 						if(a!== null && typeof a !== 'undefined'){
-								return a.update('owed', owed => owed + ((p.get('cost')/totalWeight)* state.shares.byId.get(s).get('weight')));
+								return a.update('owed', owed => owed + ((cost/totalWeight)* state.shares.byId.get(s).get('weight')));
 						}
 						return a;
 					}

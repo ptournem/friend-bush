@@ -3,7 +3,6 @@ import Share from '../containers/Share';
 
 const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSetPayementPaidBy, payement, friends }) => {
   let labelInput;
-  let costInput;
   let paidBySelect;
 
   return(
@@ -28,17 +27,13 @@ const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSe
     </td>
     <td>
     <input type="text"
-      value={Number.isFinite(payement.get('cost'))?payement.get('cost').toFixed(2):''}
+      value={payement.get('cost')}
       placeholder="0.00"
       onChange={(e)=>{
         e.preventDefault()
-        if(!parseFloat(costInput.value.trim())){
-          onSetPayementCost("");
-          return;
-        }
-        onSetPayementCost(parseFloat(costInput.value));
+
+        onSetPayementCost(e.target.value);
       }}
-      ref={node => {costInput = node;}}
       />
     </td>
     <td>
