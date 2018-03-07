@@ -63,7 +63,12 @@ body {
         border-color: #E66060; }
   #leftPane .project-adder {
     position: absolute;
-    bottom: 10px; }
+    bottom: 10px;
+    border-top: 1px solid grey;
+    padding-top: 10px;
+    display: block;
+    left: 15px;
+    right: 15px; }
     #leftPane .project-adder h4 {
       margin: 0px;
       margin-bottom: 5px;
