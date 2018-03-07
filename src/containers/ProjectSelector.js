@@ -4,7 +4,7 @@ import {database,auth} from '../firebase';
 import ProjectSelectorComponent from '../components/ProjectSelector';
 
 const mapStateToProps = state => {
-	
+
 	return  {
 		localProjects : state.user.get('projects'),
 		current : state.user.get('current')
@@ -14,12 +14,20 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
     onLoadFromId : (id) => {
-			database.ref('projects/'+id + '/data').once('value').then(snapshot=>{
-				if(snapshot.val() !== null){
-					dispatch(loadJson(JSON.parse(snapshot.val())));
+			// récupération du projet courant
+			database.ref('users/'+auth.currentUser.uid+'/current').once('value').then(snapshot=>{
+				// si il y en a un, on se desabonne des changements
+				if(snapshot.val()!= null){
+					database.ref('projects/'+snapshot.val()+'/data').off();
 				}
+
+				// on s'abonne ensuite au project sélectionné
+				database.ref('projects/'+id + '/data';).on('value',snapshot=>{
+					if(snapshot.val() !== null){
+						dispatch(loadJson(JSON.parse(snapshot.val())));
+					}
+				})
 			})
-			
 		},
     deleteProject : (id)=>{
 			dispatch(reset());

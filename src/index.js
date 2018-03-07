@@ -23,7 +23,7 @@ registerServiceWorker();
 
 auth.onAuthStateChanged((user) => {
 			store.dispatch(setUser(user));
-			
+
 			// si l'user est connecté
 			if(user !== null){
 				// on récupere sa liste de projets
@@ -36,12 +36,12 @@ auth.onAuthStateChanged((user) => {
 						const projects=Object.keys(val).map((key) => {return {id : key, name: val[key] }} );
 						store.dispatch(setUserProjects(projects));
 				});
-				
+
 				// on récupère le projet courant
 				database.ref('users/' + user.uid + '/current').once('value', snapshot =>{
 					const val = snapshot.val();
 					if(val !== null){
-						database.ref('projects/'+val + '/data').once('value').then(snapshot =>{
+						database.ref('projects/'+val + '/data').on('value',snapshot =>{
 							if(snapshot.val() !== null){
 								store.dispatch(loadJson(JSON.parse(snapshot.val())));
 							}
