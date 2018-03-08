@@ -6,8 +6,8 @@ const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSe
   let paidBySelect;
 
   return(
-  <tr>
-    <td>
+  <tr className="payement-row">
+    <td className="payement-cell-description">
       <input type="text"
         value={payement.get('label')===null?"":payement.get('label')}
         placeholder="payement's description"
@@ -25,9 +25,9 @@ const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSe
         ref={node => {labelInput = node;}}
         />
     </td>
-    <td>
+    <td className="payement-cell-price">
     <input type="text"
-      value={payement.get('cost')}
+      value={payement.get('cost')?payement.get('cost'):''}
       placeholder="0.00"
       onChange={(e)=>{
         e.preventDefault()
@@ -36,7 +36,7 @@ const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSe
       }}
       />
     </td>
-    <td>
+    <td className="payement-cell-paid-by">
       <select value={payement.get('paidById')==null?"":payement.get('paidById')}
         onChange={(e)=>{
           onSetPayementPaidBy(paidBySelect.value===""?null:paidBySelect.value);
@@ -52,7 +52,7 @@ const Payement = ({ onRemovePayement, onSetPayementLabel, onSetPayementCost,onSe
       <Share key={payement.get('id') + "_" + friend.get('id')} payementId={payement.get('id')} friendId={friend.get('id')}/>
     )}
 
-    <td>
+    <td className="payement-cell-delete">
       <button onClick={()=>{
           onRemovePayement()
         }}>

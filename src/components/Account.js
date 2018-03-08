@@ -33,7 +33,7 @@ const Account = ({accounts, friends}) => {
         <td>{(totalPaid - totalOwed).toFixed(2)}</td>
       </tr>
       <tr>
-        <td><AddFriend /></td>
+        <td colSpan="4"><AddFriend /></td>
       </tr>
     </tbody>
   );

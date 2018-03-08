@@ -225,3 +225,34 @@ body, html, #root, #main {
 #not-connected{
   text-align: center;
 }
+
+.payement-container {
+  .payement-row {
+    margin : 2px 0px;
+
+    &:nth-child(even){
+      &, input {
+          background-color : #f7efef;
+      }
+    }
+
+    &:hover {
+      .payement-cell-delete {
+        button {
+          display : inline;
+        }
+      }
+    }
+
+    .payement-cell-delete {
+      width : 30px;
+      button {
+        display : none;
+      }
+    }
+  }
+}
+
+button.add-friend{
+  width : 100%;
+}

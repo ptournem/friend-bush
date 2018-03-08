@@ -41,7 +41,7 @@ const App = ({user, current}) => {
 			<div className="App row">
 				<div className="col-md-8">
 					<div className="panel">
-						<table>
+						<table className="payement-container">
 							<Friends account={false}/>
 							<Payements />
 						</table>

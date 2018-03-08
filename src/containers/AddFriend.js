@@ -8,8 +8,8 @@ let AddFriend = ({dispatch}) => {
 				e.preventDefault();
 				dispatch(addFriend());
 				}}>
-				<button type="submit">
-					+
+				<button className="add-friend" type="submit">
+					Add a friend
 				</button>
 			</form>
 	);

@@ -154,3 +154,17 @@ body, html, #root, #main {
 
 #not-connected {
   text-align: center; }
+
+.payement-container .payement-row {
+  margin: 2px 0px; }
+  .payement-container .payement-row:nth-child(even), .payement-container .payement-row:nth-child(even) input {
+    background-color: #f7efef; }
+  .payement-container .payement-row:hover .payement-cell-delete button {
+    display: inline; }
+  .payement-container .payement-row .payement-cell-delete {
+    width: 30px; }
+    .payement-container .payement-row .payement-cell-delete button {
+      display: none; }
+
+button.add-friend {
+  width: 100%; }
