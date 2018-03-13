@@ -1,4 +1,4 @@
-import {SET_PROJECT_NAME, LOAD_JSON, RESET } from '../actions';
+import {SET_PROJECT_NAME, LOAD_JSON, RESET, SET_PROJECT_USERS } from '../actions';
 import {fromJS} from 'immutable';
 import uuid from 'uuid/v1';
 
@@ -9,10 +9,11 @@ const defaultName = "New Project";
  */
 function getDefaultState(){
 	const id = "project_" + uuid();
-	return 	fromJS({
+	const ret =	fromJS({
 			id,
 			name : defaultName,
 		});
+	return ret.set('users',{});
 }
 
 /**
@@ -42,6 +43,18 @@ function loadFromJSON(state,action){
 }
 
 /**
+ * [setProjectUsers set users collaborating on this project]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function setProjectUsers(state,action){
+	const {payLoad} = action;
+	const {users} = payLoad;
+
+	return state.set('users', users);
+}
+
+/**
  * [reset reset project]
  * @param {Map} state  [current state]
  * @param {Object} action [action to handle]
@@ -59,6 +72,7 @@ const  projectReducer = (state = null,action) => {
 		case SET_PROJECT_NAME: return setProjectName(state,action);
 		case LOAD_JSON : return loadFromJSON(state,action);
 		case RESET : return(reset(state,action));
+		case SET_PROJECT_USERS : return(setProjectUsers(state,action));
 		default: return state;
 
 	}

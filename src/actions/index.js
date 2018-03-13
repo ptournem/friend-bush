@@ -11,6 +11,7 @@ export const SET_USER_CURRENT_PROJECT = "SET_USER_CURRENT_PROJECT";
 
 // Project
 export const SET_PROJECT_NAME = "SET_PROJECT_NAME";
+export const SET_PROJECT_USERS = "SET_PROJECT_USERS";
 export const LOAD_JSON = "LOAD_JSON";
 export const RESET = "RESET";
 export const SET_ADD_PROJECT_ID = "SET_ADD_PROJECT_ID";
@@ -258,3 +259,12 @@ export const setUserCurrentProject = (current)=> {
 export const setAddProjectId  = (id)=> {
   return actionCreator(SET_ADD_PROJECT_ID,{id});
 };
+
+/**
+ * Set user collaborating on this project
+ * @param [Objects] users [users]
+ * @return {Object}    [action]
+ */
+export const setProjectUsers = (users) =>{
+  return actionCreator(SET_PROJECT_USERS,{users});
+}

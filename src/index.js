@@ -6,7 +6,7 @@ import App from './App';
 import friendBushApp from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import firebaseStorage from './middleware/firebaseStorage';
-import {setUser,setUserProjects,loadJson} from './actions';
+import {setUser,setUserProjects,loadJson, setProjectUsers} from './actions';
 import {auth,database} from './firebase';
 
 let store = createStore(
@@ -41,9 +41,10 @@ auth.onAuthStateChanged((user) => {
 				database.ref('users/' + user.uid + '/current').once('value', snapshot =>{
 					const val = snapshot.val();
 					if(val !== null){
-						database.ref('projects/'+val + '/data').on('value',snapshot =>{
+						database.ref('projects/'+val).on('value',snapshot =>{
 							if(snapshot.val() !== null){
-								store.dispatch(loadJson(JSON.parse(snapshot.val())));
+								store.dispatch(loadJson(JSON.parse(snapshot.val().data)));
+								store.dispatch(setProjectUsers(snapshot.val().users));
 							}
 						});
 					}

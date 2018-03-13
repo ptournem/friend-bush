@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {loadJson,reset} from '../actions';
+import {loadJson,reset, setProjectUsers} from '../actions';
 import {database,auth} from '../firebase';
 import ProjectSelectorComponent from '../components/ProjectSelector';
 
@@ -18,13 +18,14 @@ const mapDispatchToProps = dispatch => {
 			database.ref('users/'+auth.currentUser.uid+'/current').once('value').then(snapshot=>{
 				// si il y en a un, on se desabonne des changements
 				if(snapshot.val()!= null){
-					database.ref('projects/'+snapshot.val()+'/data').off();
+					database.ref('projects/'+snapshot.val()).off();
 				}
 
 				// on s'abonne ensuite au project sélectionné
-				database.ref('projects/'+id + '/data').on('value',snapshot=>{
+				database.ref('projects/'+id).on('value',snapshot=>{
 					if(snapshot.val() !== null){
-						dispatch(loadJson(JSON.parse(snapshot.val())));
+						dispatch(loadJson(JSON.parse(snapshot.val().data)));
+						dispatch(setProjectUsers(snapshot.val().users));
 					}
 				})
 			})

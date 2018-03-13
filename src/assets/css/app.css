@@ -10,6 +10,7 @@ body {
       color: black; }
 
 .projectId {
+  float: right;
   text-align: right;
   color: grey;
   margin: 10px 0px 0px 0px; }
@@ -168,3 +169,21 @@ body, html, #root, #main {
 
 button.add-friend {
   width: 100%; }
+
+#users-container {
+  margin: 10px 0px 0px 0px;
+  max-width: 60%;
+  padding: 0px;
+  width: 60%;
+  min-width: 60%;
+  display: block;
+  height: 52px; }
+  #users-container .users-item {
+    margin: 0px 5px;
+    float: left;
+    list-style: none;
+    display: block; }
+    #users-container .users-item img {
+      height: 42px;
+      width: 42px;
+      border-radius: 50%; }

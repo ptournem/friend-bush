@@ -4,6 +4,7 @@ import Payements from '../containers/Payements';
 import Accounts from '../containers/Accounts';
 import ProjectName from '../containers/ProjectName';
 import ResetProject from '../containers/ResetProject';
+import ProjectUsers from '../containers/ProjectUsers';
 
 const App = ({user, current}) => {
 	if(!user){
@@ -35,8 +36,11 @@ const App = ({user, current}) => {
 					</div>
 				</header>
 			</div>
-			<div className="projectId">
-				{current}
+			<div className="project-header">
+				<div className="projectId">
+					{current}
+				</div>
+				<ProjectUsers />
 			</div>
 			<div className="App row">
 				<div className="col-md-8">
