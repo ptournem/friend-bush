@@ -17,7 +17,7 @@ function getAccounts(state){
 		cost = cost ? cost : 0;
 
 		// on ajoute au payeur
-		if(p.get('paidById') != null && Number.isFinite(p.get('cost'))){
+		if(p.get('paidById') != null && Number.isFinite(cost)){
 			accounts = accounts.update(p.get('paidById'),
 				a => {
 					if(a!== null && typeof a !== 'undefined'){
