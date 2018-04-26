@@ -4,14 +4,11 @@ body {
   font-family: 'PT Sans Caption', Verdana, Helvetica;
 }
 
-.logoBlock {
-  text-align:  center;
-  border-bottom : 1px solid $text-selected;
-  h1 {
-    color : $text-selected;
-    span {
-      color : black;
-    }
+.is-brand-name {
+  color : $text-selected !important;
+  font-weight: bold;
+  span {
+    color : black;
   }
 }
 
@@ -144,23 +141,6 @@ header {
   height : calc(100% - 70px);
 }
 
-.button {
-  height: 36px;
-  width: 36px;
-  padding: 0 !important;
-  border: 2px solid rgba(255, 255, 255, 0.5) !important;
-  line-height: 35px !important;
-  text-align: center;
-  border-radius: 50%;
-  background-color: transparent;
-  color : $text-white;
-  margin: 17px 5px;
-  cursor : pointer;
-  &:hover {
-    color :$text-selected;
-  }
-}
-
 .panel {
   width: calc(100% - 10px);
   height : calc(100% - 20px);
@@ -252,10 +232,6 @@ body, html, #root, #main {
       }
     }
   }
-}
-
-button.add-friend{
-  width : 100%;
 }
 
 #users-container {

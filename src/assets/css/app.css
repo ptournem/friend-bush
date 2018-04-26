@@ -1,13 +1,11 @@
 body {
   font-family: 'PT Sans Caption', Verdana, Helvetica; }
 
-.logoBlock {
-  text-align: center;
-  border-bottom: 1px solid #E66060; }
-  .logoBlock h1 {
-    color: #E66060; }
-    .logoBlock h1 span {
-      color: black; }
+.is-brand-name {
+  color: #E66060 !important;
+  font-weight: bold; }
+  .is-brand-name span {
+    color: black; }
 
 .projectId {
   float: right;
@@ -101,21 +99,6 @@ header {
 .App {
   height: calc(100% - 70px); }
 
-.button {
-  height: 36px;
-  width: 36px;
-  padding: 0 !important;
-  border: 2px solid rgba(255, 255, 255, 0.5) !important;
-  line-height: 35px !important;
-  text-align: center;
-  border-radius: 50%;
-  background-color: transparent;
-  color: #FFFFFF;
-  margin: 17px 5px;
-  cursor: pointer; }
-  .button:hover {
-    color: #E66060; }
-
 .panel {
   width: calc(100% - 10px);
   height: calc(100% - 20px);
@@ -166,9 +149,6 @@ body, html, #root, #main {
     width: 30px; }
     .payement-container .payement-row .payement-cell-delete button {
       display: none; }
-
-button.add-friend {
-  width: 100%; }
 
 #users-container {
   margin: 10px 0px 0px 0px;

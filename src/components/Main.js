@@ -1,10 +1,15 @@
 import React from 'react';
+import LandingPage from './LandingPage';
 import AppContainer from '../containers/App';
 import ProjectSelector from '../containers/ProjectSelector';
 import UserMenuAction from '../containers/UserMenuAction';
 import ProjectAdder from '../containers/ProjectAdder';
 
 const Main = ({user, current}) => {
+	if(!user){
+		return <LandingPage />;
+	}
+
 	return (
 		<div className="row" id="main">
 			<section id="leftPane" className="col-xs-3 col-md-2">
