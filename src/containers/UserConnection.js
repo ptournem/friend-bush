@@ -4,10 +4,8 @@ import {setUser} from '../actions';
 import {auth,provider} from '../firebase';
 
 const mapStateToProps = state => {
-	return  {
-    user : state.user.get('user')
-	};
-}
+	return {};
+};
 
 const mapDispatchToProps = dispatch => {
 	return {
@@ -16,15 +14,9 @@ const mapDispatchToProps = dispatch => {
 	    .then((result) => {
 	      setUser(result.user);
 	    });
-		},
-		logout : () => {
-			auth.signOut()
-	        .then(() => {
-	          setUser(null);
-	        });
 		}
-	}
-}
+	};
+};
 
 const UserConnection = connect(
   mapStateToProps,
