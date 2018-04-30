@@ -17,6 +17,7 @@ export const RESET = "RESET";
 export const SET_ADD_PROJECT_ID = "SET_ADD_PROJECT_ID";
 export const SET_SHOW_PROJECT_SELECTOR = "SET_SHOW_PROJECT_SELECTOR";
 export const SET_SHOW_SYNC_PROJECT = "SET_SHOW_SYNC_PROJECT";
+export const SET_CURRENT_TAB = "SET_CURRENT_TAB";
 
 // Friends
 export const ADD_FRIEND = 'ADD_FRIEND';
@@ -287,4 +288,13 @@ export const setShowProjectSelector = (show) =>{
  */
 export const setShowSyncProject = (show) =>{
   return actionCreator(SET_SHOW_SYNC_PROJECT,{show});
+}
+
+/**
+ * Set the current tab to show
+ * @param [String] tab [tab]
+ * @return {Object}    [action]
+ */
+export const setCurrentTab = (tab) =>{
+  return actionCreator(SET_CURRENT_TAB,{tab});
 }

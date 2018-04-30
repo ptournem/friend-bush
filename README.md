@@ -5,8 +5,8 @@ toDo :
 - sur remove d'un friend, remove ses shares dans les payements
 - design (en cours)
   - 5 premier users affiché sur la page + le nombre en plus
-  - Tab pour les paiements et les friends
   - design des inputs text  
+- FIX : affichage du project id et list des users des que l'on a sauvegarder le projet
 - Header button to copy project id to share it
 - ajouter des tests unitaire ( notamment sur le calcul de l'account )
 
