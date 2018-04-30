@@ -4,10 +4,15 @@ import {setAddProjectId,setShowSyncProject} from '../actions';
 import {auth,database} from '../firebase';
 
 const mapStateToProps = (state) => {
+  const current = state.user.get('current')?state.user.get('current').split('_')[1]:'';
   const projectId = state.user.get('projectId');
+  const usersObject = state.project.get('users');
+  const users = typeof usersObject === "object" ?Object.values(usersObject) : [];
   return {
     user : state.user.get('user'),
-    projectId
+    projectId,
+    current,
+    users
   };
 };
 

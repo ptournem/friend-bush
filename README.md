@@ -4,8 +4,6 @@ toDo :
 - sur remove d'un friend, remove les share dans la list byId et alls
 - sur remove d'un friend, remove ses shares dans les payements
 - design (en cours)
-  - id de partage dans la modal de Sync
-  - liste des users dans la modal de sync
   - 5 premier users affiché sur la page + le nombre en plus
   - Tab pour les paiements et les friends
   - design des inputs text  

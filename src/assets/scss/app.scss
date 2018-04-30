@@ -22,15 +22,10 @@ body {
     }
 }
 
-.projectId {
-  float : right;
-  text-align: right;
-  color : grey;
-  margin : 10px 0px 0px 0px;
-}
+
 
 input.share{
-  width : 10px;
+  width : 20px;
 }
 
 body{
@@ -51,10 +46,10 @@ body{
     float : left;
     list-style: none;
     display : block;
-    img{
-      height : 42px;
-      width : 42px;
-      border-radius: 50%;
-    }
+
   }
+}
+
+img.rounded{
+  border-radius: 50%;
 }

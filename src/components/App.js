@@ -2,19 +2,13 @@ import React from 'react';
 import Friends from '../containers/Friends';
 import Payements from '../containers/Payements';
 import Accounts from '../containers/Accounts';
-import ProjectUsers from '../containers/ProjectUsers';
 import ProjectName from '../containers/ProjectName';
 
 const App = ({user, current}) => {
 	return (
 		<div>
-			<div className="project-header">
+			<div>
 				<ProjectName />
-				<div className="projectId">
-					{current}
-				</div>
-				<ProjectUsers />
-
 			</div>
 			<table className="table is-striped is-fullwidth">
 				<Friends account={false}/>
