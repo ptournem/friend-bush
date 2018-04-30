@@ -1,8 +1,12 @@
 import React from 'react';
 
-const UserDeconnection = ({logout}) => {
+const UserDeconnection = ({user,logout}) => {
   return (
-    <button onClick={logout}> Log out</button>
+    <div className="button" onClick={logout}>
+      <span className="icon">
+        <i className="zmdi zmdi-power"></i>
+      </span>
+    </div>
   );
 }
 

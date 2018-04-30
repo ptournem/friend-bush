@@ -7,148 +7,24 @@ body {
   .is-brand-name span {
     color: black; }
 
+#navbar-menu-action {
+  position: absolute;
+  right: 0px; }
+  #navbar-menu-action .navbar-item > * {
+    margin-right: 5px; }
+
 .projectId {
   float: right;
   text-align: right;
   color: grey;
   margin: 10px 0px 0px 0px; }
 
-#leftPane {
-  background-color: #FFFFFF;
-  height: 100%;
-  position: relative; }
-  #leftPane #logoBlock {
-    text-align: center;
-    border-bottom: 1px solid #E66060; }
-    #leftPane #logoBlock h1 {
-      color: #E66060; }
-      #leftPane #logoBlock h1 span {
-        color: black; }
-  #leftPane #user-box {
-    padding: 10px;
-    text-align: center; }
-    #leftPane #user-box img {
-      width: 30%;
-      display: block;
-      margin: auto;
-      border-radius: 100%; }
-    #leftPane #user-box button {
-      margin: auto; }
-  #leftPane #projectSelector ul {
-    border: 0;
-    font-weight: normal;
-    line-height: 1;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    text-decoration: none; }
-    #leftPane #projectSelector ul li {
-      cursor: pointer;
-      border: none;
-      color: #2a323c;
-      display: block;
-      padding: 15px 25px;
-      background-color: #fefefe;
-      font-size: 15px;
-      border-bottom: 1px solid grey; }
-      #leftPane #projectSelector ul li .deleteProject {
-        display: none;
-        float: right; }
-      #leftPane #projectSelector ul li:hover .deleteProject {
-        display: block; }
-      #leftPane #projectSelector ul li.active {
-        color: #E66060;
-        border-color: #E66060; }
-  #leftPane .project-adder {
-    position: absolute;
-    bottom: 10px;
-    border-top: 1px solid grey;
-    padding-top: 10px;
-    display: block;
-    left: 15px;
-    right: 15px; }
-    #leftPane .project-adder h4 {
-      margin: 0px;
-      margin-bottom: 5px;
-      text-align: center; }
-
-header {
-  width: 100%;
-  height: 70px;
-  color: #8F8F8F;
-  background-color: #2A323C; }
-  header #projectName {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border: none;
-    box-shadow: none;
-    color: #FFFFFF;
-    font-size: 14px;
-    height: 30px;
-    padding: 6px 20px 6px 12px;
-    margin-top: 14px;
-    margin-left: 15px;
-    border-radius: 30px;
-    padding-left: 20px;
-    width: 100%; }
-    header #projectName:focus {
-      border: none; }
-  header .button {
-    float: right; }
-
-.App {
-  height: calc(100% - 70px); }
-
-.panel {
-  width: calc(100% - 10px);
-  height: calc(100% - 20px);
-  background-color: white;
-  margin: 10px 5px;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1); }
-
-table {
-  width: 100%;
-  border-collapse: collapse; }
-  table thead th {
-    padding: 8px;
-    color: #666666;
-    border-bottom: 2px solid #8F8F8F;
-    text-align: left; }
-  table tbody {
-    color: #797979; }
-    table tbody tr td {
-      padding: 8px;
-      border-bottom: 1px solid #797979; }
-    table tbody tr:last-of-type td {
-      border-bottom: 0px; }
-    table tbody input {
-      border: 0px;
-      width: auto; }
-      table tbody input:focus {
-        outline: none; }
-
 input.share {
   width: 10px; }
 
-body, html, #root, #main {
-  margin: 0px;
-  height: 100%;
-  background-color: #F5F5F5; }
-
-#not-connected {
-  text-align: center; }
-
-.payement-container .payement-row {
-  margin: 2px 0px; }
-  .payement-container .payement-row:nth-child(even), .payement-container .payement-row:nth-child(even) input {
-    background-color: #f7efef; }
-  .payement-container .payement-row:hover .payement-cell-delete button {
-    display: inline; }
-  .payement-container .payement-row .payement-cell-delete {
-    width: 30px; }
-    .payement-container .payement-row .payement-cell-delete button {
-      display: none; }
+body {
+  background-color: #F5F5F5;
+  overflow-x: auto; }
 
 #users-container {
   margin: 10px 0px 0px 0px;

@@ -1,8 +1,8 @@
-import {SET_PROJECT_NAME, LOAD_JSON, RESET, SET_PROJECT_USERS } from '../actions';
+import {SET_PROJECT_NAME, LOAD_JSON, RESET, SET_PROJECT_USERS,SET_SHOW_SYNC_PROJECT, SET_SHOW_PROJECT_SELECTOR} from '../actions';
 import {fromJS} from 'immutable';
 import uuid from 'uuid/v1';
 
-const defaultName = "New Project";
+const defaultName = "";
 
 /**
  * [getDefaultState generate a default state]
@@ -12,6 +12,8 @@ function getDefaultState(){
 	const ret =	fromJS({
 			id,
 			name : defaultName,
+			showSelectProject : false,
+			showSyncProject : false
 		});
 	return ret.set('users',{});
 }
@@ -55,6 +57,30 @@ function setProjectUsers(state,action){
 }
 
 /**
+ * [setShowSyncProject set show sync project]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function setShowSyncProject(state,action){
+	const {payLoad} = action;
+	const {show} = payLoad;
+
+	return state.set('showSyncProject',show);
+}
+
+/**
+ * [setShowProjectSelector set show sync project]
+ * @param {Map} state  [current state]
+ * @param {Object} action [action to handle]
+ */
+function setShowProjectSelector(state,action){
+	const {payLoad} = action;
+	const {show} = payLoad;
+
+	return state.set('showSelectProject',show);
+}
+
+/**
  * [reset reset project]
  * @param {Map} state  [current state]
  * @param {Object} action [action to handle]
@@ -73,6 +99,8 @@ const  projectReducer = (state = null,action) => {
 		case LOAD_JSON : return loadFromJSON(state,action);
 		case RESET : return(reset(state,action));
 		case SET_PROJECT_USERS : return(setProjectUsers(state,action));
+		case SET_SHOW_SYNC_PROJECT : return setShowSyncProject(state,action);
+		case SET_SHOW_PROJECT_SELECTOR : return setShowProjectSelector(state,action);
 		default: return state;
 
 	}

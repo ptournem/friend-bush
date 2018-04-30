@@ -1,22 +1,13 @@
 import React from 'react';
 import UserConnection from '../containers/UserConnection';
+import AppNavBar from '../containers/AppNavBar';
 
 const Main = ({user, current}) => {
 	return (
 		<section className="hero is-light is-bold is-fullheight">
-
 			<div className="hero-head">
-		    <nav className="navbar">
-		      <div className="container">
-		        <div className="navbar-brand">
-		          <div className="navbar-item is-brand-name">
-		            Friend<span>Bush</span>
-						</div>
-		        </div>
-		      </div>
-		    </nav>
+		    <AppNavBar />
 		  </div>
-
 		  <div className="hero-body">
 		    <div className="container has-text-centered">
 		      <h1 className="title is-brand-name">

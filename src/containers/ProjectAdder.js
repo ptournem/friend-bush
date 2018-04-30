@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import ProjectAdderComponent from '../components/ProjectAdder';
-import {setAddProjectId} from '../actions';
+import {setAddProjectId,setShowSyncProject} from '../actions';
 import {auth,database} from '../firebase';
 
 const mapStateToProps = (state) => {
@@ -25,9 +25,13 @@ const mapDispatchToProps = (dispatch) => {
           updates['projects/project_'+id + "/users/"+auth.currentUser.uid+"/photo"] = auth.currentUser.photoURL;
           database.ref().update(updates);
           dispatch(setAddProjectId(''));
+          dispatch(setShowSyncProject(false));
         }
       })
-    }
+    },
+		onSetHideSyncProject : () => {
+			dispatch(setShowSyncProject(false));
+		},
   };
 };
 

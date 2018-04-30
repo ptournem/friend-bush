@@ -3,8 +3,14 @@ Application in development which will help you to compute how many bucks each pe
 toDo :
 - sur remove d'un friend, remove les share dans la list byId et alls
 - sur remove d'un friend, remove ses shares dans les payements
-- Mise à disposition d'un lien partageable / ajout d'un projet externe
-- Probleme remplissage des champs costs et weight
+- design (en cours)
+  - id de partage dans la modal de Sync
+  - liste des users dans la modal de sync
+  - 5 premier users affiché sur la page + le nombre en plus
+  - Tab pour les paiements et les friends
+  - design des inputs text  
+- Header button to copy project id to share it
+- ajouter des tests unitaire ( notamment sur le calcul de l'account )
 
 Firebase structure :
   - users

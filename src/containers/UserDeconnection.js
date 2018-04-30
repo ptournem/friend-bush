@@ -4,7 +4,9 @@ import {setUser} from '../actions';
 import {auth} from '../firebase';
 
 const mapStateToProps = state => {
-	return {};
+	return  {
+    user : state.user.get('user')
+	};
 };
 
 const mapDispatchToProps = dispatch => {

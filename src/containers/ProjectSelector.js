@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {loadJson,reset, setProjectUsers} from '../actions';
+import {loadJson,reset, setProjectUsers, setShowProjectSelector} from '../actions';
 import {database,auth} from '../firebase';
 import ProjectSelectorComponent from '../components/ProjectSelector';
 
@@ -27,7 +27,9 @@ const mapDispatchToProps = dispatch => {
 						dispatch(loadJson(JSON.parse(snapshot.val().data)));
 						dispatch(setProjectUsers(snapshot.val().users));
 					}
-				})
+				});
+
+				dispatch(setShowProjectSelector(false));
 			})
 		},
     deleteProject : (id)=>{
@@ -36,7 +38,10 @@ const mapDispatchToProps = dispatch => {
 			updates['users/'+auth.currentUser.uid+'/projects/'+id] = null;
 			updates['projects/'+ id + '/users/'+auth.currentUser.uid] = null;
 			database.ref().update(updates);
-    }
+    },
+		onHideProjectSelector : () => {
+			dispatch(setShowProjectSelector(false));
+		}
 	}
 }
 

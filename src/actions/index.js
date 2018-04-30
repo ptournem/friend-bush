@@ -15,6 +15,8 @@ export const SET_PROJECT_USERS = "SET_PROJECT_USERS";
 export const LOAD_JSON = "LOAD_JSON";
 export const RESET = "RESET";
 export const SET_ADD_PROJECT_ID = "SET_ADD_PROJECT_ID";
+export const SET_SHOW_PROJECT_SELECTOR = "SET_SHOW_PROJECT_SELECTOR";
+export const SET_SHOW_SYNC_PROJECT = "SET_SHOW_SYNC_PROJECT";
 
 // Friends
 export const ADD_FRIEND = 'ADD_FRIEND';
@@ -267,4 +269,22 @@ export const setAddProjectId  = (id)=> {
  */
 export const setProjectUsers = (users) =>{
   return actionCreator(SET_PROJECT_USERS,{users});
+}
+
+/**
+ * Set the show project selector variable
+ * @param [Boolean] show [show]
+ * @return {Object}    [action]
+ */
+export const setShowProjectSelector = (show) =>{
+  return actionCreator(SET_SHOW_PROJECT_SELECTOR,{show});
+}
+
+/**
+ * Set the show sync project variable
+ * @param [Boolean] show [show]
+ * @return {Object}    [action]
+ */
+export const setShowSyncProject = (show) =>{
+  return actionCreator(SET_SHOW_SYNC_PROJECT,{show});
 }
