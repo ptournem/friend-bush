@@ -33,8 +33,9 @@ function getAccounts(state){
 		p.get('shares').forEach(s => {
 			// on ajoute au poids total que les share dont l'user existe encore
 			const share = state.shares.byId.get(s);
-			if(state.friends.byId.has(share.get('owedById'))){
-				totalWeight+= share.get('weight');
+			const weight = share.get('weight');
+			if(typeof weight === "number" && state.friends.byId.has(share.get('owedById'))){
+				totalWeight+= weight;
 			}
 		});
 
