@@ -1,0 +1,54 @@
+@import 'colors.scss';
+
+body {
+  font-family: 'PT Sans Caption', Verdana, Helvetica;
+}
+
+.is-brand-name {
+  color : $text-selected !important;
+  font-weight: bold;
+  span {
+    color : black;
+  }
+}
+
+#navbar-menu-action{
+    position: absolute;;
+    right: 0px;
+
+    .navbar-item > *
+    {
+      margin-right : 5px;
+    }
+}
+
+
+
+input.share{
+  width : 20px;
+}
+
+body{
+  overflow-x: auto;
+}
+
+#users-container {
+  margin : 10px 0px 0px 0px;
+  max-width : 60%;
+  padding : 0px;
+  width : 60%;
+  min-width: 60%;
+  display : block;
+  height  : 52px;
+  .users-item {
+    margin : 0px 5px;
+    float : left;
+    list-style: none;
+    display : block;
+
+  }
+}
+
+img.rounded{
+  border-radius: 50%;
+}
