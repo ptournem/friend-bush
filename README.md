@@ -1,5 +1,7 @@
 Application in development which will help you to compute how many bucks each personn of a group owe you for the last event you went together
 
+You can test it here : https://friendbush.paultournemaine.fr/
+
 toDo :
 - sur remove d'un friend, remove les share dans la list byId et alls
 - sur remove d'un friend, remove ses shares dans les payements
